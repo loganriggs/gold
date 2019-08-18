@@ -419,7 +419,7 @@ def main():
     # print(f)
     # drawGraph(G, "bam.png")
     # drawFrequency(G, "bamF.png", f)
-    graphTests(gamma) #TODO
+    graphTests(gamma)
     return
 
 if __name__ == "__main__":
