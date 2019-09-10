@@ -5,4 +5,5 @@ edgeList = [
     [1, 1, 0],
 ]
 G = FrequencyGraph(edgeList)
+print(G.frequencies())
 G.drawFrequencyGraph("graph.png")

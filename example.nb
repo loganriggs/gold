@@ -1,0 +1,174 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5859,        164]
+NotebookOptionsPosition[      5159,        145]
+NotebookOutlinePosition[      5494,        160]
+CellTagsIndexPosition[      5451,        157]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", " ", "=", " ", 
+     RowBox[{"DirectedGraph", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"1", "\[Rule]", "2"}], ",", " ", 
+         RowBox[{"2", "\[Rule]", "2"}], ",", " ", 
+         RowBox[{"1", "\[Rule]", "1"}]}], "}"}], ",", " ", 
+       RowBox[{"VertexLabels", "\[Rule]", "\"\<Name\>\""}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "x", " ", 
+   RowBox[{"(*", "Graph", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"frequencyVector", "[", "x", "]"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"Entire", " ", "frequency", " ", "vector"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"fV", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"frequencyVector", "[", "x", "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"Frequency", " ", "vector", " ", "of", " ", "1"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"frequencyToInequality", "[", 
+    RowBox[{"fV", ",", " ", "r1"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.77711986851201*^9, 
+  3.7771199699111767`*^9}},ExpressionUUID->"4ece227c-a591-4ccd-8156-\
+e94047013385"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{1, 2}, {{{1, 2}, {2, 2}, {1, 1}}, Null}, {
+      VertexLabels -> {"Name"}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+        ArrowBox[BezierCurveBox[{{1., 0.}, {1.0884792554677603`, 
+         0.1907835323853024}, {1.2873577330053512`, 0.24717977484589673`}, {
+         1.4145283574798084`, 0.18822269607102357`}, {
+         1.4145283574798089`, -0.18822269607102265`}, {
+         1.2873577330053516`, -0.2471797748458961}, {
+         1.0884792554677607`, -0.19078353238530207`}, {1., 0.}},
+         SplineDegree->7], 0.01273], 
+        ArrowBox[{{1., 0.}, {0., 1.2246467991473532`*^-16}}, 0.01273], 
+        ArrowBox[BezierCurveBox[{{0., 
+         1.2246467991473532`*^-16}, {-0.08847925546776056, \
+-0.19078353238530224`}, {-0.2873577330053514, -0.24717977484589632`}, \
+{-0.41452835747980865`, -0.18822269607102304`}, {-0.41452835747980865`, 
+         0.18822269607102318`}, {-0.2873577330053514, 
+         0.24717977484589648`}, {-0.08847925546776059, 0.1907835323853024}, {
+         0., 1.2246467991473532`*^-16}},
+         SplineDegree->7], 0.01273]}, 
+       {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+        0.7]}], {DiskBox[{1., 0.}, 0.01273], 
+         InsetBox["1", Offset[{2, 2}, {1.01273, 0.01273}], ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0., 1.2246467991473532*^-16}, 0.01273], 
+         InsetBox["2", Offset[{2, 2}, {0.01273, 0.012730000000000123}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Output",
+ CellChangeTimes->{3.7771198729929247`*^9},
+ CellLabel->
+  "Out[596]=",ExpressionUUID->"2aa1cedb-a4e0-4016-991e-f6e4f36ec249"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       FractionBox["y", 
+        RowBox[{"1", "-", "y"}]]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"1", "-", "y"}]], ",", "0"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      FractionBox["1", 
+       RowBox[{"1", "-", "y"}]]}], "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7771198730060368`*^9},
+ CellLabel->
+  "Out[597]=",ExpressionUUID->"e8018976-feb5-423e-958d-940ea229eda9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     FractionBox["y", 
+      RowBox[{"1", "-", "y"}]]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"1", "-", "y"}]], ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7771198730081177`*^9},
+ CellLabel->
+  "Out[598]=",ExpressionUUID->"46ca1cad-284d-4d77-8e82-5c82c126fb00"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"r2", "\[Element]", 
+   TemplateBox[{},
+    "Reals"]}], "&&", 
+  RowBox[{"0", "<", "y", "<", "1"}], "&&", 
+  RowBox[{"r1", "\[LessEqual]", "r2"}]}]], "Output",
+ CellChangeTimes->{3.777119873010017*^9},
+ CellLabel->
+  "Out[599]=",ExpressionUUID->"62d7cfee-097c-43a8-9273-75722283763b"]
+}, Open  ]]
+},
+WindowSize->{960, 1016},
+WindowMargins->{{150, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1203, 30, 170, "Input",ExpressionUUID->"4ece227c-a591-4ccd-8156-e94047013385"],
+Cell[1786, 54, 2037, 40, 125, "Output",ExpressionUUID->"2aa1cedb-a4e0-4016-991e-f6e4f36ec249"],
+Cell[3826, 96, 593, 20, 56, "Output",ExpressionUUID->"e8018976-feb5-423e-958d-940ea229eda9"],
+Cell[4422, 118, 400, 13, 56, "Output",ExpressionUUID->"46ca1cad-284d-4d77-8e82-5c82c126fb00"],
+Cell[4825, 133, 318, 9, 35, "Output",ExpressionUUID->"62d7cfee-097c-43a8-9273-75722283763b"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

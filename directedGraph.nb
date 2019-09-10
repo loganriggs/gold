@@ -1,0 +1,378 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16813,        370]
+NotebookOptionsPosition[     16200,        352]
+NotebookOutlinePosition[     16533,        367]
+CellTagsIndexPosition[     16490,        364]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"VertexOut", "[", 
+    RowBox[{"g_", ",", " ", "var_"}], "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"VertexList", ",", " ", "vertexOut"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"VertexList", "[", "g", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"vertexOut", " ", "=", " ", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"VertexOutComponent", "[", 
+          RowBox[{"g", ",", "var"}], "]"}], ",", "1"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{
+          RowBox[{"AdjacencyList", "[", 
+           RowBox[{"g", ",", "var"}], "]"}], ",", " ", "var"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"vertexOut", ",", " ", "var"}], "]"}], ";"}], 
+        "\[IndentingNewLine]", ","}], " ", "]"}], ";", "\[IndentingNewLine]", 
+      "vertexOut"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"frequencyVectorHelper", "[", 
+    RowBox[{
+    "depthG_", ",", "localNodesVisitedG_", ",", "localFreqVectorG_", ",", 
+     "initialNodeG_", ",", "gammaAllG_", ",", "cycleDenominatorAllG_", ",", 
+     "graphG_"}], "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "depth", ",", "localNodesVisited", ",", "localFreqVector", ",", "k", 
+       ",", " ", "scalar"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"depth", " ", "=", " ", "depthG"}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"localNodesVisited", " ", "=", " ", "localNodesVisitedG"}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"localFreqVector", " ", "=", " ", "localFreqVectorG"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"currentNode", "=", 
+       RowBox[{"Last", "[", "localNodesVisited", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"MemberQ", "[", 
+            RowBox[{"localNodesVisited", ",", " ", "neighbor"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"k", " ", "=", " ", 
+             RowBox[{"depth", " ", "-", " ", 
+              RowBox[{
+               RowBox[{"Flatten", "[", 
+                RowBox[{"Position", "[", 
+                 RowBox[{"localNodesVisited", ",", " ", "neighbor"}], "]"}], 
+                "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"indexRangeOfLoop", " ", "=", " ", 
+             RowBox[{"localNodesVisited", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"depth", "-", "k"}], ";;", " ", "depth"}], "]"}], 
+              "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"scalar", " ", "=", " ", 
+             RowBox[{"cycleDenominatorAllG", "[", 
+              RowBox[{"[", 
+               RowBox[{"k", "+", "1"}], "]"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{
+              RowBox[{"freqVector", "[", 
+               RowBox[{"[", "initialNodeG", "]"}], "]"}], ",", " ", 
+              "localFreqVector"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"freqVector", "[", 
+              RowBox[{"[", 
+               RowBox[{"initialNodeG", ",", " ", 
+                RowBox[{"-", "1"}], ",", " ", "indexRangeOfLoop"}], "]"}], 
+              "]"}], " ", "*=", " ", "scalar"}], ";"}], "\[IndentingNewLine]",
+            ",", " ", 
+           RowBox[{"(*", " ", "Else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"depth", " ", "+=", " ", "1"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"localNodesVisited", ",", " ", "neighbor"}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"localFreqVector", "[", 
+              RowBox[{"[", "neighbor", "]"}], "]"}], " ", "=", "  ", 
+             RowBox[{"gammaAllG", "[", 
+              RowBox[{"[", "depth", "]"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"frequencyVectorHelper", "[", 
+             RowBox[{
+             "depth", ",", " ", "localNodesVisited", ",", " ", 
+              "localFreqVector", ",", " ", "initialNodeG", ",", " ", 
+              "gammaAllG", ",", " ", "cycleDenominatorAllG", ",", " ", 
+              "graphG"}], "]"}], ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"localFreqVector", "[", 
+              RowBox[{"[", "neighbor", "]"}], "]"}], " ", "=", "  ", "0"}], 
+            ";", "\[IndentingNewLine]", 
+            RowBox[{"localNodesVisited", " ", "=", " ", 
+             RowBox[{"Delete", "[", 
+              RowBox[{"localNodesVisited", ",", " ", 
+               RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"depth", " ", "-=", "1"}], ";"}]}], "\[IndentingNewLine]",
+           "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"neighbor", ",", " ", 
+          RowBox[{"VertexOut", "[", 
+           RowBox[{"graphG", ",", "currentNode"}], "]"}]}], "}"}]}], "]"}], 
+      ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"frequencyVector", "[", "g_", "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "stateSize", ",", " ", "gammaAll", ",", " ", "cycleDenominatorAll", ",",
+        " ", "localNodesVisited", ",", " ", "localFreqVector", ",", " ", 
+       "depth"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"stateSize", " ", "=", " ", 
+       RowBox[{"VertexCount", "[", "g", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"gammaAll", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"y", "^", 
+          RowBox[{"(", 
+           RowBox[{"i", "-", "1"}], ")"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", "stateSize"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cycleDenominatorAll", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"1", "/", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            RowBox[{"y", "^", "i"}]}], ")"}]}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", "stateSize"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"freqVector", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"VertexCount", "[", "g", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"localNodesVisited", " ", "=", " ", 
+          RowBox[{"List", "[", "node", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"localFreqVector", " ", "=", " ", 
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", " ", "stateSize"}], "}"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"localFreqVector", "[", 
+           RowBox[{"[", "node", "]"}], "]"}], " ", "=", " ", "1"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"depth", " ", "=", " ", "1"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"frequencyVectorHelper", "[", 
+          RowBox[{
+          "depth", ",", "localNodesVisited", ",", "localFreqVector", ",", 
+           "node", ",", "gammaAll", ",", "cycleDenominatorAll", ",", "g"}], 
+          "]"}]}], "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"node", ",", 
+          RowBox[{"VertexList", "[", "g", "]"}]}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "freqVector"}]}], "\[IndentingNewLine]", "]"}]}],
+   ";"}]}], "Input",
+ CellChangeTimes->{{3.776621980973123*^9, 3.776621990334757*^9}, {
+   3.776622049931699*^9, 3.776622119488349*^9}, {3.776622212477111*^9, 
+   3.776622224759904*^9}, {3.776622404622666*^9, 3.7766224170468817`*^9}, {
+   3.7766224813174753`*^9, 3.776622493282818*^9}, {3.776622565880863*^9, 
+   3.7766225794610453`*^9}, {3.776622610222899*^9, 3.776622612189686*^9}, {
+   3.7766229210893993`*^9, 3.776622926503887*^9}, {3.7766230220650177`*^9, 
+   3.776623109955278*^9}, {3.7766231546995993`*^9, 3.776623219400914*^9}, {
+   3.776623327403504*^9, 3.776623480416946*^9}, {3.776623511444255*^9, 
+   3.776623598643713*^9}, {3.776623783436688*^9, 3.7766239266778793`*^9}, {
+   3.776623988897324*^9, 3.776623992088084*^9}, {3.776624097968377*^9, 
+   3.776624116258245*^9}, {3.776624153292673*^9, 3.776624238828515*^9}, {
+   3.776624271382666*^9, 3.776624357451006*^9}, {3.776624400197056*^9, 
+   3.776624465286303*^9}, {3.7766252951728067`*^9, 3.776625308560376*^9}, {
+   3.776625406897793*^9, 3.776625764736829*^9}, {3.776625849249749*^9, 
+   3.776626287158764*^9}, {3.776626328722795*^9, 3.776626401748212*^9}, {
+   3.776626480661763*^9, 3.776626578462878*^9}, {3.776626616640641*^9, 
+   3.776626664804619*^9}, {3.776626701657997*^9, 3.776626750977455*^9}, {
+   3.7766268500379477`*^9, 3.7766270797926407`*^9}, {3.776672523910384*^9, 
+   3.776672570859394*^9}, {3.776795160437043*^9, 3.7767951827644453`*^9}, {
+   3.776795215038245*^9, 3.776795244941175*^9}, {3.776795378216066*^9, 
+   3.7767953789758*^9}, {3.77679548394156*^9, 3.776795483993491*^9}, {
+   3.7767956891424103`*^9, 3.776795745208407*^9}, {3.776795846681554*^9, 
+   3.776795846880823*^9}, {3.77679588076805*^9, 3.7767958810607986`*^9}, {
+   3.776796097785144*^9, 3.776796118400433*^9}, {3.776796170955801*^9, 
+   3.77679620050252*^9}, {3.776796234319878*^9, 3.776796411024721*^9}, {
+   3.776796449475675*^9, 3.7767965458908033`*^9}, {3.776796594600998*^9, 
+   3.77679682153657*^9}, {3.776796852799638*^9, 3.776796853180422*^9}, {
+   3.7767969147237587`*^9, 3.776796998436042*^9}, {3.776797141819922*^9, 
+   3.776797155876169*^9}, 3.776797206652979*^9, {3.776797806744749*^9, 
+   3.776797810909911*^9}, {3.776797842404406*^9, 3.776797902802906*^9}, {
+   3.77679810644179*^9, 3.776798301777795*^9}, {3.776798334210264*^9, 
+   3.776798338141795*^9}, 3.7767983798665333`*^9, {3.776798505310162*^9, 
+   3.776798544249875*^9}, {3.776798588100424*^9, 3.7767986264024963`*^9}, {
+   3.776798682119334*^9, 3.7767986909188137`*^9}, {3.776798777916019*^9, 
+   3.776798806791441*^9}, {3.77711648258211*^9, 3.777116542586688*^9}, {
+   3.777116637678125*^9, 3.777116650055155*^9}, {3.777116680564413*^9, 
+   3.777116698791202*^9}, {3.777116831511509*^9, 3.777117020249366*^9}, {
+   3.777117051988899*^9, 3.7771171287118263`*^9}, {3.7771171617089977`*^9, 
+   3.777117313941696*^9}, {3.77711734400736*^9, 3.777117547887027*^9}, {
+   3.777117578300129*^9, 3.777117582551525*^9}, {3.777117714124333*^9, 
+   3.7771177962987747`*^9}, {3.77711782814839*^9, 3.777117831450034*^9}, {
+   3.7771179061358013`*^9, 3.777117963372119*^9}, {3.777118021250729*^9, 
+   3.7771180550885067`*^9}, {3.777118116967622*^9, 3.77711819553693*^9}, {
+   3.7771182622135468`*^9, 3.7771185037472343`*^9}, {3.777118544810437*^9, 
+   3.777118624440989*^9}, {3.77711869505233*^9, 3.777118812295639*^9}, {
+   3.777118847092698*^9, 3.777118887758234*^9}, {3.7771189376606216`*^9, 
+   3.777119128717697*^9}, {3.777119547010811*^9, 3.777119553132263*^9}, {
+   3.777119626020679*^9, 3.7771196602869997`*^9}, {3.777119722727458*^9, 
+   3.777119753489458*^9}, {3.777119844431641*^9, 
+   3.777119857815921*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
+7e584a49f672"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       FractionBox["y", 
+        RowBox[{"1", "-", "y"}]]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"1", "-", "y"}]], ",", "0"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      FractionBox["1", 
+       RowBox[{"1", "-", "y"}]]}], "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.777117966255076*^9, {3.777118027009471*^9, 3.777118056149181*^9}, 
+   3.777118119997733*^9, 3.777118160989335*^9, 3.777118196249645*^9, 
+   3.7771182856994762`*^9, {3.777118322790492*^9, 3.777118331349719*^9}, 
+   3.777118385011318*^9, {3.77711842850177*^9, 3.7771185042227793`*^9}, {
+   3.7771185470936613`*^9, 3.777118576279808*^9}, {3.7771186145815153`*^9, 
+   3.77711862497577*^9}, {3.777118777689135*^9, 3.77711881290366*^9}, 
+   3.777118889649165*^9, 3.777118955543853*^9, 3.777119027886002*^9, 
+   3.777119059501362*^9, {3.777119093452252*^9, 3.777119129116873*^9}, 
+   3.7771195539036837`*^9, {3.777119644547666*^9, 3.7771196611855173`*^9}, {
+   3.7771197232028503`*^9, 3.7771197540161*^9}, {3.777119832448846*^9, 
+   3.777119844888294*^9}},
+ CellLabel->
+  "Out[588]=",ExpressionUUID->"9b4dcb4c-89bd-4a21-8fbf-5ac16454fbd0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     FractionBox["y", 
+      RowBox[{"1", "-", "y"}]]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"1", "-", "y"}]], ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.777117966255076*^9, {3.777118027009471*^9, 3.777118056149181*^9}, 
+   3.777118119997733*^9, 3.777118160989335*^9, 3.777118196249645*^9, 
+   3.7771182856994762`*^9, {3.777118322790492*^9, 3.777118331349719*^9}, 
+   3.777118385011318*^9, {3.77711842850177*^9, 3.7771185042227793`*^9}, {
+   3.7771185470936613`*^9, 3.777118576279808*^9}, {3.7771186145815153`*^9, 
+   3.77711862497577*^9}, {3.777118777689135*^9, 3.77711881290366*^9}, 
+   3.777118889649165*^9, 3.777118955543853*^9, 3.777119027886002*^9, 
+   3.777119059501362*^9, {3.777119093452252*^9, 3.777119129116873*^9}, 
+   3.7771195539036837`*^9, {3.777119644547666*^9, 3.7771196611855173`*^9}, {
+   3.7771197232028503`*^9, 3.7771197540161*^9}, {3.777119832448846*^9, 
+   3.777119844892453*^9}},
+ CellLabel->
+  "Out[589]=",ExpressionUUID->"61654aee-52ac-4987-af32-32a58a77ecb0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"r2", "\[Element]", 
+   TemplateBox[{},
+    "Reals"]}], "&&", 
+  RowBox[{"0", "<", "y", "<", "1"}], "&&", 
+  RowBox[{"r1", "\[LessEqual]", "r2"}]}]], "Output",
+ CellChangeTimes->{
+  3.777117966255076*^9, {3.777118027009471*^9, 3.777118056149181*^9}, 
+   3.777118119997733*^9, 3.777118160989335*^9, 3.777118196249645*^9, 
+   3.7771182856994762`*^9, {3.777118322790492*^9, 3.777118331349719*^9}, 
+   3.777118385011318*^9, {3.77711842850177*^9, 3.7771185042227793`*^9}, {
+   3.7771185470936613`*^9, 3.777118576279808*^9}, {3.7771186145815153`*^9, 
+   3.77711862497577*^9}, {3.777118777689135*^9, 3.77711881290366*^9}, 
+   3.777118889649165*^9, 3.777118955543853*^9, 3.777119027886002*^9, 
+   3.777119059501362*^9, {3.777119093452252*^9, 3.777119129116873*^9}, 
+   3.7771195539036837`*^9, {3.777119644547666*^9, 3.7771196611855173`*^9}, {
+   3.7771197232028503`*^9, 3.7771197540161*^9}, {3.777119832448846*^9, 
+   3.777119844896077*^9}},
+ CellLabel->
+  "Out[590]=",ExpressionUUID->"e8cdb512-ac4d-440a-aa59-bee7354bb060"]
+}, Open  ]]
+},
+WindowSize->{960, 1016},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 12092, 246, 1343, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[12675, 270, 1323, 31, 56, "Output",ExpressionUUID->"9b4dcb4c-89bd-4a21-8fbf-5ac16454fbd0"],
+Cell[14001, 303, 1130, 24, 56, "Output",ExpressionUUID->"61654aee-52ac-4987-af32-32a58a77ecb0"],
+Cell[15134, 329, 1050, 20, 35, "Output",ExpressionUUID->"e8cdb512-ac4d-440a-aa59-bee7354bb060"]
+}, Open  ]]
+}
+]
+*)
+
