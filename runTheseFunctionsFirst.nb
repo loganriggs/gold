@@ -1,0 +1,800 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     38796,        792]
+NotebookOptionsPosition[     38413,        778]
+NotebookOutlinePosition[     38746,        793]
+CellTagsIndexPosition[     38703,        790]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"vertexOutFunction", "[", 
+    RowBox[{"g_", ",", " ", "var_"}], "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"VertexList", ",", " ", "vertexOut"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"VertexList", "[", "g", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"vertexOut", " ", "=", " ", 
+       RowBox[{"Intersection", "[", 
+        RowBox[{
+         RowBox[{"Drop", "[", 
+          RowBox[{
+           RowBox[{"VertexOutComponent", "[", 
+            RowBox[{"g", ",", "var"}], "]"}], ",", "1"}], "]"}], ",", 
+         RowBox[{"AdjacencyList", "[", 
+          RowBox[{"g", ",", "var"}], "]"}]}], "]"}]}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{
+          RowBox[{"AdjacencyList", "[", 
+           RowBox[{"g", ",", "var"}], "]"}], ",", " ", "var"}], "]"}], ",", 
+        " ", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"If", " ", 
+           RowBox[{"it", "'"}], "s", " ", "a", " ", "member", " ", "of", " ", 
+           "itself"}], ",", " ", 
+          RowBox[{
+           RowBox[{"then", " ", "self"}], "-", "loop"}], ",", " ", 
+          RowBox[{"include", " ", "it"}]}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"vertexOut", ",", " ", "var"}], "]"}], ";"}], 
+        "\[IndentingNewLine]", ","}], " ", "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", "vertexOut"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"frequencyVectorHelper", "[", 
+    RowBox[{
+    "depthG_", ",", "localNodesVisitedG_", ",", "localFreqVectorG_", ",", 
+     "initialNodeG_", ",", "gammaAllG_", ",", "cycleDenominatorAllG_", ",", 
+     "graphG_"}], "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "depth", ",", "localNodesVisited", ",", "localFreqVector", ",", "k", 
+       ",", " ", "scalar"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"depth", " ", "=", " ", "depthG"}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"localNodesVisited", " ", "=", " ", "localNodesVisitedG"}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"localFreqVector", " ", "=", " ", "localFreqVectorG"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"currentNode", "=", 
+       RowBox[{"Last", "[", "localNodesVisited", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"MemberQ", "[", 
+            RowBox[{"localNodesVisited", ",", " ", "neighbor"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"k", " ", "=", " ", 
+             RowBox[{"depth", " ", "-", " ", 
+              RowBox[{
+               RowBox[{"Flatten", "[", 
+                RowBox[{"Position", "[", 
+                 RowBox[{"localNodesVisited", ",", " ", "neighbor"}], "]"}], 
+                "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"indexRangeOfLoop", " ", "=", " ", 
+             RowBox[{"localNodesVisited", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"depth", "-", "k"}], ";;", " ", "depth"}], "]"}], 
+              "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"scalar", " ", "=", " ", 
+             RowBox[{"cycleDenominatorAllG", "[", 
+              RowBox[{"[", 
+               RowBox[{"k", "+", "1"}], "]"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{
+              RowBox[{"freqVector", "[", 
+               RowBox[{"[", "initialNodeG", "]"}], "]"}], ",", " ", 
+              "localFreqVector"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"freqVector", "[", 
+              RowBox[{"[", 
+               RowBox[{"initialNodeG", ",", " ", 
+                RowBox[{"-", "1"}], ",", " ", "indexRangeOfLoop"}], "]"}], 
+              "]"}], " ", "*=", " ", "scalar"}], ";"}], "\[IndentingNewLine]",
+            ",", " ", 
+           RowBox[{"(*", " ", "Else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"depth", " ", "+=", " ", "1"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"AppendTo", "[", 
+             RowBox[{"localNodesVisited", ",", " ", "neighbor"}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"localFreqVector", "[", 
+              RowBox[{"[", "neighbor", "]"}], "]"}], " ", "=", "  ", 
+             RowBox[{"gammaAllG", "[", 
+              RowBox[{"[", "depth", "]"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"frequencyVectorHelper", "[", 
+             RowBox[{
+             "depth", ",", " ", "localNodesVisited", ",", " ", 
+              "localFreqVector", ",", " ", "initialNodeG", ",", " ", 
+              "gammaAllG", ",", " ", "cycleDenominatorAllG", ",", " ", 
+              "graphG"}], "]"}], ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"localFreqVector", "[", 
+              RowBox[{"[", "neighbor", "]"}], "]"}], " ", "=", "  ", "0"}], 
+            ";", "\[IndentingNewLine]", 
+            RowBox[{"localNodesVisited", " ", "=", " ", 
+             RowBox[{"Delete", "[", 
+              RowBox[{"localNodesVisited", ",", " ", 
+               RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"depth", " ", "-=", "1"}], ";"}]}], "\[IndentingNewLine]",
+           "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"neighbor", ",", " ", 
+          RowBox[{"vertexOutFunction", "[", 
+           RowBox[{"graphG", ",", "currentNode"}], "]"}]}], "}"}]}], "]"}], 
+      ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"frequencyVector", "[", "g_", "]"}], ":=", "\[IndentingNewLine]", 
+    
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "stateSize", ",", " ", "gammaAll", ",", " ", "cycleDenominatorAll", 
+        ",", " ", "localNodesVisited", ",", " ", "localFreqVector", ",", " ", 
+        "depth"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Clear", "[", 
+        RowBox[{"freqVector", ",", " ", "\[Gamma]"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"freqVector", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"VertexCount", "[", "g", "]"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"stateSize", " ", "=", " ", 
+        RowBox[{"VertexCount", "[", "g", "]"}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"gammaAll", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"\[Gamma]", "^", 
+           RowBox[{"(", 
+            RowBox[{"i", "-", "1"}], ")"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", "stateSize"}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"cycleDenominatorAll", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"1", "/", 
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[Gamma]", "^", "i"}]}], ")"}]}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", "stateSize"}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"localNodesVisited", " ", "=", " ", 
+           RowBox[{"List", "[", "node", "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"localFreqVector", " ", "=", " ", 
+           RowBox[{"Table", "[", 
+            RowBox[{"0", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", " ", "stateSize"}], "}"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"localFreqVector", "[", 
+            RowBox[{"[", "node", "]"}], "]"}], " ", "=", " ", "1"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"depth", " ", "=", " ", "1"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"frequencyVectorHelper", "[", 
+           RowBox[{
+           "depth", ",", "localNodesVisited", ",", "localFreqVector", ",", 
+            "node", ",", "gammaAll", ",", "cycleDenominatorAll", ",", "g"}], 
+           "]"}]}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"node", ",", 
+           RowBox[{"VertexList", "[", "g", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "freqVector"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"frequencyToEquationList", "[", "freq_", "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "f", ",", " ", "states", ",", " ", "frequencies", ",", " ", 
+        "stateList", ",", " ", "eqList", ",", " ", "eq", ",", " ", "fInd", 
+        ",", " ", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"f", " ", "=", " ", "freq"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"states", " ", "=", " ", 
+        RowBox[{"Length", "[", 
+         RowBox[{"f", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"frequencies", " ", "=", " ", 
+        RowBox[{"Length", "[", "f", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", " ", 
+         RowBox[{"i", "\[LessEqual]", "states"}], ",", " ", 
+         RowBox[{"i", "++"}], ",", " ", 
+         RowBox[{
+          RowBox[{"f", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "i"}], "]"}], "]"}], " ", "*=", 
+          RowBox[{"r", "[", "i", "]"}]}]}], "]"}], ";", "\[IndentingNewLine]",
+        "\[IndentingNewLine]", 
+       RowBox[{"eqList", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"fInd", "=", " ", "1"}], ",", " ", 
+         RowBox[{"fInd", "\[LessEqual]", " ", "frequencies"}], ",", " ", 
+         RowBox[{"fInd", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"eq", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+            RowBox[{"i", "\[LessEqual]", " ", "states"}], ",", " ", 
+            RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"eq", " ", "+=", 
+              RowBox[{"f", "[", 
+               RowBox[{"[", 
+                RowBox[{"fInd", ",", "i"}], "]"}], "]"}]}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"eqList", ",", " ", "eq"}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       "eqList"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"frequencyToInequality", "[", 
+     RowBox[{"eqList_", ",", " ", "frequency_"}], "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "f", ",", " ", "states", ",", " ", "frequencies", ",", " ", 
+        "stateList", ",", " ", "eq", ",", " ", "fInd", ",", " ", "i", ",", 
+        " ", "inList"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"frequencies", " ", "=", " ", 
+        RowBox[{"Length", "[", "eqList", "]"}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"inList", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"fInd", "=", " ", "1"}], ",", " ", 
+         RowBox[{"fInd", "\[LessEqual]", " ", "frequencies"}], ",", " ", 
+         RowBox[{"fInd", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"fInd", " ", "\[NotEqual]", " ", "frequency"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"inList", ",", " ", 
+               RowBox[{
+                RowBox[{"eqList", "[", 
+                 RowBox[{"[", "frequency", "]"}], "]"}], " ", ">", "   ", 
+                RowBox[{"eqList", "[", 
+                 RowBox[{"[", "fInd", "]"}], "]"}]}]}], "]"}], ";"}], 
+            "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", "]"}], 
+          ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"inList", ",", "  ", 
+         RowBox[{"0", " ", "<", "  ", "\[Gamma]", "<", " ", "1"}]}], "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"output", " ", "=", " ", 
+        RowBox[{"FullSimplify", "[", 
+         RowBox[{"Reduce", "[", 
+          RowBox[{"inList", ",", "hyperCubeVariables", ",", " ", "Reals"}], 
+          "]"}], "]"}]}], ";", "\[IndentingNewLine]", "output"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"powerOfGraph", "[", 
+     RowBox[{"vertexList_", ",", " ", 
+      RowBox[{"displayStates_:", " ", "\"\<First\>\""}], ",", 
+      RowBox[{"debugLevel_:", " ", "\"\<None\>\""}]}], "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Clear", "[", 
+        RowBox[{"r", ",", "  ", "\[Gamma]"}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"$Assumptions", " ", "=", " ", 
+        RowBox[{"{", 
+         RowBox[{"0", " ", "<", "  ", "\[Gamma]", "<", " ", "1"}], "}"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"DirectedGraph", "[", 
+         RowBox[{"vertexList", ",", " ", 
+          RowBox[{"VertexLabels", "\[Rule]", "\"\<Name\>\""}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"numberOfStates", " ", "=", " ", 
+        RowBox[{"VertexCount", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"Array", "[", 
+        RowBox[{"r", ",", "numberOfStates"}], "]"}], ";", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{"hyperCubeRegionBoundsGlobal", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"hyperCubeVariables", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", " ", 
+         RowBox[{"i", "\[LessEqual]", "numberOfStates"}], ",", " ", 
+         RowBox[{"i", "++"}], ",", " ", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"hyperCubeRegionBoundsGlobal", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"0", " ", "\[LessEqual]", " ", 
+              RowBox[{"r", "[", "i", "]"}], " ", "\[LessEqual]", " ", "1"}], 
+             "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"hyperCubeVariables", ",", " ", 
+            RowBox[{"r", "[", "i", "]"}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"freqVector", " ", "=", " ", 
+        RowBox[{"frequencyVector", "[", "x", "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{"Entire", " ", "frequency", " ", "vector"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", "\"\<Initial Graph:\>\"", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "x", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<Frequency Vector: \>\"", ",", " ", "freqVector"}], 
+           "]"}], ";"}], "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"For", " ", "Loop", " ", "for", " ", "all", " ", "states"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"powerOfStates", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"TODO", ":", " ", 
+         RowBox[{
+         "Remember", " ", "to", " ", "replace", " ", "the", " ", "1", " ", 
+          "below", " ", "with", " ", "all", " ", "states"}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"displayStates", " ", "\[Equal]", " ", "\"\<First\>\""}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"maxStateLoops", " ", "=", " ", "1"}], ";"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"(*", 
+           RowBox[{"Else", ",", " ", 
+            RowBox[{"==", " ", "All"}]}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"maxStateLoops", " ", "=", " ", "numberOfStates"}], 
+           ";"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"currentState", "=", "1"}], ",", " ", 
+          RowBox[{"currentState", "\[LessEqual]", "maxStateLoops"}], ",", " ", 
+          RowBox[{"currentState", "++"}], ",", " ", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"fV", " ", "=", " ", 
+            RowBox[{"freqVector", "[", 
+             RowBox[{"[", "currentState", "]"}], "]"}]}], ";", " ", 
+           RowBox[{"(*", 
+            RowBox[{"Frequency", " ", "vector", " ", "of", " ", "1"}], "*)"}],
+            "\[IndentingNewLine]", 
+           RowBox[{"equationList", " ", "=", " ", 
+            RowBox[{"frequencyToEquationList", "[", "fV", "]"}]}], ";", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"numberOfFrequencies", " ", "=", " ", 
+            RowBox[{"Length", "[", "equationList", "]"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+              "Print", "[", 
+               "\"\<##########################################################\
+###################################\>\"", "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Print", "[", 
+               RowBox[{"\"\<Equation List: \>\"", ",", " ", "equationList"}], 
+               "]"}], ";"}], "\[IndentingNewLine]", ","}], 
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+            "For", " ", "Loop", " ", "for", " ", "all", " ", "frequencies", 
+             " ", "of", " ", "a", " ", "given", " ", "state"}], "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"numberOfFrequencies", "\[Equal]", "1"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"region", "=", 
+               RowBox[{"ImplicitRegion", "[", 
+                RowBox[{
+                 RowBox[{"Evaluate", "[", 
+                  RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}], 
+                  "]"}], ",", " ", 
+                 RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
+                "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"finalPower", " ", "=", " ", 
+               RowBox[{"Integrate", "[", 
+                RowBox[{
+                 RowBox[{"equationList", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+                "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"powerOfStates", " ", ",", " ", 
+                RowBox[{"Simplify", "[", "finalPower", "]"}]}], "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"(*", 
+              RowBox[{"Else", ",", " ", 
+               RowBox[{"#ofFreq", " ", ">", " ", "1"}]}], "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"(*", 
+              RowBox[{
+              "Need", " ", "to", " ", "subtract", " ", "reward", " ", "of", 
+               " ", "current", " ", "state", " ", "from", " ", "beginning", 
+               " ", "of", " ", "every", " ", "state", " ", "we", " ", "care", 
+               " ", "about"}], "*)"}], "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"preparedInequalityList", " ", "=", " ", 
+               RowBox[{"Simplify", "[", 
+                RowBox[{"equationList", " ", "-", 
+                 RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"finalPower", " ", "=", " ", "0"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"(*", 
+               RowBox[{
+               "Begin", " ", "for", " ", "loop", " ", "for", " ", "power", 
+                " ", "of", " ", "state"}], "*)"}], "\[IndentingNewLine]", 
+              RowBox[{"For", "[", 
+               RowBox[{
+                RowBox[{"currentReward", "=", "1"}], ",", " ", 
+                RowBox[{
+                "currentReward", "\[LessEqual]", "numberOfFrequencies"}], ",",
+                 " ", 
+                RowBox[{"currentReward", "++"}], ",", " ", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"ineq", " ", "=", " ", 
+                  RowBox[{"frequencyToInequality", "[", 
+                   RowBox[{"equationList", ",", " ", "currentReward"}], 
+                   "]"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"(*", 
+                  RowBox[{"Returns", " ", "inequality", " ", "list"}], "*)"}],
+                  "\[IndentingNewLine]", 
+                 RowBox[{
+                 "hyperCubeRegionBounds", " ", "=", " ", 
+                  "hyperCubeRegionBoundsGlobal"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"test2", " ", "=", 
+                  RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}]}], 
+                 ";", "\[IndentingNewLine]", 
+                 RowBox[{"test", " ", "=", " ", 
+                  RowBox[{"Join", "[", 
+                   RowBox[{
+                    RowBox[{"{", "ineq", "}"}], ",", " ", "test2"}], "]"}]}], 
+                 ";", "\n", "              ", 
+                 RowBox[{"region", "=", 
+                  RowBox[{"ImplicitRegion", "[", 
+                   RowBox[{"test", ",", " ", 
+                    RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
+                   "]"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"interm", " ", "=", " ", 
+                  RowBox[{"Integrate", "[", 
+                   RowBox[{
+                    RowBox[{"preparedInequalityList", "[", 
+                    RowBox[{"[", "currentReward", "]"}], "]"}], ",", 
+                    RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+                   "]"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"finalPower", " ", "+=", "interm"}], ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], ",",
+                    "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<+++++++++++++++++++++++++++++++++++++++++++++++++++++\
+++++++++++++++++++++++++\>\"", "]"}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"Print", "[", 
+                    RowBox[{
+                    "\"\<Current Frequency Index: \>\"", ",", " ", 
+                    "currentReward"}], "]"}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Inequalities used: \>\"", ",", " ", "ineq"}],
+                     "]"}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Integration: \>\"", ",", " ", "interm"}], 
+                    "]"}], ";"}], "\[IndentingNewLine]", ","}], 
+                  "\[IndentingNewLine]", "]"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"initialPowerValue", " ", "=", " ", 
+               RowBox[{"1", "/", "2"}]}], ";", 
+              RowBox[{"(*", 
+               RowBox[{
+               "Change", " ", "for", " ", "other", " ", "distributions"}], 
+               "*)"}], "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"powerOfStates", " ", ",", " ", 
+                RowBox[{"initialPowerValue", "  ", "+", " ", 
+                 RowBox[{"Simplify", "[", "finalPower", "]"}]}]}], "]"}], 
+              ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"displayStates", " ", "\[Equal]", " ", "\"\<First\>\""}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"powerGraph", " ", "=", " ", 
+           RowBox[{"DirectedGraph", "[", 
+            RowBox[{"vertexList", ",", " ", 
+             RowBox[{"VertexLabels", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"1", "->", 
+                RowBox[{"Placed", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"\"\<Name\>\"", ",", " ", 
+                    RowBox[{"powerOfStates", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", " ", 
+                  RowBox[{"{", 
+                   RowBox[{"Above", ",", " ", "Below"}], "}"}]}], "]"}]}], 
+               "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"(*", 
+          RowBox[{"Else", ",", " ", 
+           RowBox[{"\[Equal]", " ", "\"\<All\>\""}]}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"powerGraph", " ", "=", " ", 
+           RowBox[{"DirectedGraph", "[", 
+            RowBox[{"vertexList", ",", " ", 
+             RowBox[{"VertexLabels", "\[Rule]", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"i", " ", "\[Rule]", " ", 
+                 RowBox[{"Placed", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"\"\<Name\>\"", ",", " ", 
+                    RowBox[{"powerOfStates", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", " ", 
+                   RowBox[{"{", 
+                    RowBox[{"Above", ",", " ", "Below"}], "}"}]}], "]"}]}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "numberOfStates"}], "}"}]}], "]"}]}]}], 
+            "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+       "\[IndentingNewLine]", "powerGraph"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"powerCheck", "[", "equation_", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", "+", " ", 
+      RowBox[{"Simplify", "[", "equation", "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.776621980973123*^9, 3.776621990334757*^9}, {
+   3.776622049931699*^9, 3.776622119488349*^9}, {3.776622212477111*^9, 
+   3.776622224759904*^9}, {3.776622404622666*^9, 3.7766224170468817`*^9}, {
+   3.7766224813174753`*^9, 3.776622493282818*^9}, {3.776622565880863*^9, 
+   3.7766225794610453`*^9}, {3.776622610222899*^9, 3.776622612189686*^9}, {
+   3.7766229210893993`*^9, 3.776622926503887*^9}, {3.7766230220650177`*^9, 
+   3.776623109955278*^9}, {3.7766231546995993`*^9, 3.776623219400914*^9}, {
+   3.776623327403504*^9, 3.776623480416946*^9}, {3.776623511444255*^9, 
+   3.776623598643713*^9}, {3.776623783436688*^9, 3.7766239266778793`*^9}, {
+   3.776623988897324*^9, 3.776623992088084*^9}, {3.776624097968377*^9, 
+   3.776624116258245*^9}, {3.776624153292673*^9, 3.776624238828515*^9}, {
+   3.776624271382666*^9, 3.776624357451006*^9}, {3.776624400197056*^9, 
+   3.776624465286303*^9}, {3.7766252951728067`*^9, 3.776625308560376*^9}, {
+   3.776625406897793*^9, 3.776625764736829*^9}, {3.776625849249749*^9, 
+   3.776626287158764*^9}, {3.776626328722795*^9, 3.776626401748212*^9}, {
+   3.776626480661763*^9, 3.776626578462878*^9}, {3.776626616640641*^9, 
+   3.776626664804619*^9}, {3.776626701657997*^9, 3.776626750977455*^9}, {
+   3.7766268500379477`*^9, 3.7766270797926407`*^9}, {3.776672523910384*^9, 
+   3.776672570859394*^9}, {3.776795160437043*^9, 3.7767951827644453`*^9}, {
+   3.776795215038245*^9, 3.776795244941175*^9}, {3.776795378216066*^9, 
+   3.7767953789758*^9}, {3.77679548394156*^9, 3.776795483993491*^9}, {
+   3.7767956891424103`*^9, 3.776795745208407*^9}, {3.776795846681554*^9, 
+   3.776795846880823*^9}, {3.77679588076805*^9, 3.7767958810607986`*^9}, {
+   3.776796097785144*^9, 3.776796118400433*^9}, {3.776796170955801*^9, 
+   3.77679620050252*^9}, {3.776796234319878*^9, 3.776796411024721*^9}, {
+   3.776796449475675*^9, 3.7767965458908033`*^9}, {3.776796594600998*^9, 
+   3.77679682153657*^9}, {3.776796852799638*^9, 3.776796853180422*^9}, {
+   3.7767969147237587`*^9, 3.776796998436042*^9}, {3.776797141819922*^9, 
+   3.776797155876169*^9}, 3.776797206652979*^9, {3.776797806744749*^9, 
+   3.776797810909911*^9}, {3.776797842404406*^9, 3.776797902802906*^9}, {
+   3.77679810644179*^9, 3.776798301777795*^9}, {3.776798334210264*^9, 
+   3.776798338141795*^9}, 3.7767983798665333`*^9, {3.776798505310162*^9, 
+   3.776798544249875*^9}, {3.776798588100424*^9, 3.7767986264024963`*^9}, {
+   3.776798682119334*^9, 3.7767986909188137`*^9}, {3.776798777916019*^9, 
+   3.776798806791441*^9}, {3.77711648258211*^9, 3.777116542586688*^9}, {
+   3.777116637678125*^9, 3.777116650055155*^9}, {3.777116680564413*^9, 
+   3.777116698791202*^9}, {3.777116831511509*^9, 3.777117020249366*^9}, {
+   3.777117051988899*^9, 3.7771171287118263`*^9}, {3.7771171617089977`*^9, 
+   3.777117313941696*^9}, {3.77711734400736*^9, 3.777117547887027*^9}, {
+   3.777117578300129*^9, 3.777117582551525*^9}, {3.777117714124333*^9, 
+   3.7771177962987747`*^9}, {3.77711782814839*^9, 3.777117831450034*^9}, {
+   3.7771179061358013`*^9, 3.777117963372119*^9}, {3.777118021250729*^9, 
+   3.7771180550885067`*^9}, {3.777118116967622*^9, 3.77711819553693*^9}, {
+   3.7771182622135468`*^9, 3.7771185037472343`*^9}, {3.777118544810437*^9, 
+   3.777118624440989*^9}, {3.77711869505233*^9, 3.777118812295639*^9}, {
+   3.777118847092698*^9, 3.777118887758234*^9}, {3.7771189376606216`*^9, 
+   3.777119128717697*^9}, {3.777119547010811*^9, 3.777119553132263*^9}, {
+   3.777119626020679*^9, 3.7771196602869997`*^9}, {3.777119722727458*^9, 
+   3.777119753489458*^9}, {3.777119844431641*^9, 3.777119857815921*^9}, {
+   3.777145912504792*^9, 3.77714609014537*^9}, {3.777146141223435*^9, 
+   3.7771461879976053`*^9}, {3.777402981876513*^9, 3.777403103098188*^9}, {
+   3.7774033221347322`*^9, 3.777403363854982*^9}, {3.7774039984551773`*^9, 
+   3.777404070843066*^9}, {3.7774044452560062`*^9, 3.777404622464383*^9}, {
+   3.777404713050271*^9, 3.7774047230499973`*^9}, {3.777404776287086*^9, 
+   3.777404813231249*^9}, {3.7778130908284197`*^9, 3.777813097873787*^9}, {
+   3.77781492461744*^9, 3.7778150863183203`*^9}, {3.777817557423276*^9, 
+   3.777817564438923*^9}, 3.777818183425396*^9, {3.777819292532228*^9, 
+   3.777819308125536*^9}, {3.7778193430390577`*^9, 3.777819411392571*^9}, {
+   3.77781944150981*^9, 3.777819454731225*^9}, {3.7778195541583*^9, 
+   3.777819576591189*^9}, 3.7792050163898773`*^9, {3.779205274800123*^9, 
+   3.7792053019695263`*^9}, {3.779205364309094*^9, 3.779205403008185*^9}, {
+   3.77920544391604*^9, 3.779205650636993*^9}, {3.779205739419032*^9, 
+   3.779205739737258*^9}, {3.779205822663781*^9, 3.779205943972013*^9}, {
+   3.779205984755458*^9, 3.779206015064513*^9}, {3.7792060717042923`*^9, 
+   3.77920607195804*^9}, {3.779206148229912*^9, 3.779206214299583*^9}, {
+   3.7792062488742456`*^9, 3.7792062531755247`*^9}, {3.779206294753312*^9, 
+   3.779206325049859*^9}, {3.779209178914432*^9, 3.779209180480282*^9}, {
+   3.7795680160594*^9, 3.7795680172475357`*^9}, {3.779568052109215*^9, 
+   3.779568107532421*^9}, 3.779568951146317*^9, {3.779569103452998*^9, 
+   3.779569138118137*^9}, {3.779569572262465*^9, 3.77956959059153*^9}, {
+   3.779572491779915*^9, 3.7795725261914473`*^9}, {3.7795734854131613`*^9, 
+   3.779573509531983*^9}, 3.779627961323053*^9, {3.779629942198257*^9, 
+   3.779629954048174*^9}, {3.7796302414754047`*^9, 3.7796302581251307`*^9}, {
+   3.779630542955387*^9, 3.779630544228269*^9}, {3.779630638409854*^9, 
+   3.7796306388215*^9}, {3.779632242857933*^9, 3.779632243700981*^9}, {
+   3.77963245088069*^9, 3.779632451427244*^9}, {3.779632483608704*^9, 
+   3.779632488830192*^9}, {3.77963306802225*^9, 3.77963309618618*^9}, {
+   3.7796332028755302`*^9, 3.779633221049663*^9}, {3.779633251500959*^9, 
+   3.779633291719039*^9}, {3.779633324108664*^9, 3.779633328417871*^9}, {
+   3.779633428808382*^9, 3.779633472754257*^9}, {3.779633526708105*^9, 
+   3.7796335772521467`*^9}, {3.7796337222540283`*^9, 
+   3.7796338454819193`*^9}, {3.779634529449389*^9, 3.779634561937595*^9}, {
+   3.779650094530306*^9, 3.7796501789464703`*^9}, {3.7796502197372303`*^9, 
+   3.779650233156557*^9}, 3.7796503296462803`*^9, 3.779650396936301*^9, {
+   3.779650675141302*^9, 3.7796506938177423`*^9}, {3.7796507347692347`*^9, 
+   3.779650750873125*^9}, {3.779651026939211*^9, 3.779651031158499*^9}, {
+   3.7796510643895903`*^9, 3.779651067790205*^9}, {3.779818919555067*^9, 
+   3.7798189556899776`*^9}, {3.779819015103223*^9, 3.7798190208895397`*^9}, {
+   3.779819056591723*^9, 3.779819058772471*^9}, {3.779819185221727*^9, 
+   3.779819215092184*^9}, 3.779819253586459*^9, {3.7798193074027243`*^9, 
+   3.779819318081511*^9}, {3.779819413369205*^9, 3.779819418015225*^9}, {
+   3.7798196524662037`*^9, 3.7798196575372057`*^9}, {3.779819695183716*^9, 
+   3.779819695786441*^9}, {3.7798199622235622`*^9, 3.7798199630869293`*^9}, {
+   3.779820231785657*^9, 3.779820233560367*^9}, {3.779820856080076*^9, 
+   3.7798209073406477`*^9}, {3.779820960771122*^9, 3.779820966620803*^9}, 
+   3.779821740532186*^9, {3.779822051062839*^9, 3.7798220649720287`*^9}, {
+   3.779822098258505*^9, 3.779822098358151*^9}, {3.779895349392816*^9, 
+   3.7798954055415907`*^9}, {3.779895631541078*^9, 3.779895637875247*^9}, {
+   3.779895752849585*^9, 3.77989575730023*^9}, {3.779895813704755*^9, 
+   3.779895815711537*^9}, {3.779895852028266*^9, 3.779895852253591*^9}, {
+   3.779895917536174*^9, 3.779895918578391*^9}, {3.779896091784287*^9, 
+   3.7798961241115294`*^9}, {3.779896164527482*^9, 3.779896206647943*^9}, {
+   3.7798963324129972`*^9, 3.779896396047988*^9}, 3.779896466012858*^9, {
+   3.779926256645833*^9, 3.779926263303467*^9}, {3.7799275833183002`*^9, 
+   3.779927624715096*^9}, {3.779927705269827*^9, 3.779927727000095*^9}, {
+   3.77992777815104*^9, 3.779927778403758*^9}, 3.7799278820168962`*^9, {
+   3.77992802826617*^9, 3.779928035709511*^9}, 3.779928068226879*^9, {
+   3.779928108653446*^9, 3.7799281134017076`*^9}, {3.779928474593362*^9, 
+   3.7799285121603107`*^9}, {3.7799285478301287`*^9, 3.77992857799572*^9}, {
+   3.779928651746134*^9, 3.7799286522563343`*^9}, 3.7799286856355677`*^9, 
+   3.779928724907711*^9, {3.779928761969976*^9, 3.779928769520762*^9}, {
+   3.779928826502837*^9, 3.77992882922932*^9}, {3.779928881590419*^9, 
+   3.779928887929497*^9}, {3.779928951755722*^9, 3.77992900115695*^9}, {
+   3.779929047150725*^9, 3.7799290741566133`*^9}, {3.7799292628294086`*^9, 
+   3.779929265028769*^9}, {3.779929350770179*^9, 3.7799293677483377`*^9}, {
+   3.7799294098683853`*^9, 3.77992943083601*^9}, {3.779929723131977*^9, 
+   3.77992982756089*^9}, {3.7799298757387867`*^9, 3.779929883430099*^9}, {
+   3.7799299377701483`*^9, 3.779929961430677*^9}, {3.779930005430934*^9, 
+   3.779930138234358*^9}, {3.7799302932194242`*^9, 3.7799303841222267`*^9}, {
+   3.7799304712063932`*^9, 3.779930643032515*^9}, {3.779930771305395*^9, 
+   3.7799308014587803`*^9}, {3.779930838821253*^9, 3.7799308420365257`*^9}, {
+   3.779934535855789*^9, 3.779934583192368*^9}, {3.77993470074109*^9, 
+   3.779934718590666*^9}, {3.7799348872836847`*^9, 3.779934972203906*^9}, {
+   3.7799353862316303`*^9, 3.779935413663052*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.77740335219701*^9},
+ CellLabel->"In[13]:=",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+},
+WindowSize->{960, 1016},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 37683, 752, 4320, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[38244, 774, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+}
+]
+*)
+
