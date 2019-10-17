@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20807,        394]
-NotebookOptionsPosition[     20291,        377]
-NotebookOutlinePosition[     20624,        392]
-CellTagsIndexPosition[     20581,        389]
+NotebookDataLength[     21146,        402]
+NotebookOptionsPosition[     20630,        385]
+NotebookOutlinePosition[     20963,        400]
+CellTagsIndexPosition[     20920,        397]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -62,7 +62,9 @@ Cell[BoxData[
    RowBox[{"(*", "            ", 
     RowBox[{"graph", "    ", ",", " ", 
      RowBox[{"First", "/", "All"}], ",", " ", 
-     RowBox[{"None", "/", "Basic"}]}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"None", "/", "Basic"}], "/", "Measure"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"powerOfGraph", "[", 
     RowBox[{
     "vertexAndNodes", ",", " ", "\"\<First\>\"", ",", " ", "\"\<None\>\""}], 
@@ -87,8 +89,13 @@ Cell[BoxData[
        "Display", " ", "basic", " ", "info", " ", "such", " ", "as", " ", 
         "frequency", " ", "vector"}]}]}], ",", " ", "inequalities", ",", " ", 
      
-     RowBox[{"and", " ", 
-      RowBox[{"integrations", "."}]}]}], "\[IndentingNewLine]", "*)"}], 
+     RowBox[{
+      RowBox[{"and", " ", 
+       RowBox[{"integrations", "."}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Measure", " ", "-", " ", 
+       RowBox[{"Display", " ", "Measure", " ", "and", " ", "power", " ", 
+        RowBox[{"graph", ".", " ", "Only"}], " ", "works", " ", "with", " ", 
+        "\"\<First\>\""}]}], ";"}]}], "\[IndentingNewLine]", "*)"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"If", " ", 
@@ -264,8 +271,9 @@ Cell[BoxData[
    3.779934644306415*^9, 3.779934644929658*^9}, {3.779934685906646*^9, 
    3.779934691996187*^9}, {3.779934757316043*^9, 3.7799348731731863`*^9}, {
    3.779935023365299*^9, 3.7799353319042892`*^9}, {3.779935597676409*^9, 
-   3.779935653826498*^9}},
- CellLabel->"In[41]:=",ExpressionUUID->"4ece227c-a591-4ccd-8156-e94047013385"],
+   3.779935653826498*^9}, {3.780312971507988*^9, 
+   3.780313022581604*^9}},ExpressionUUID->"4ece227c-a591-4ccd-8156-\
+e94047013385"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -392,9 +400,9 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 14546, 245, 446, "Input",ExpressionUUID->"4ece227c-a591-4ccd-8156-e94047013385"],
-Cell[15129, 269, 3900, 76, 449, "Output",ExpressionUUID->"db5a385d-6c9c-40a8-9ffe-4dab20945b3a"],
-Cell[19032, 347, 1243, 27, 95, "Output",ExpressionUUID->"9fe31e41-48a2-4637-8a3d-ba85c250ca77"]
+Cell[580, 22, 14885, 253, 469, "Input",ExpressionUUID->"4ece227c-a591-4ccd-8156-e94047013385"],
+Cell[15468, 277, 3900, 76, 449, "Output",ExpressionUUID->"db5a385d-6c9c-40a8-9ffe-4dab20945b3a"],
+Cell[19371, 355, 1243, 27, 62, "Output",ExpressionUUID->"9fe31e41-48a2-4637-8a3d-ba85c250ca77"]
 }, Open  ]]
 }
 ]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38796,        792]
-NotebookOptionsPosition[     38413,        778]
-NotebookOutlinePosition[     38746,        793]
-CellTagsIndexPosition[     38703,        790]
+NotebookDataLength[     41699,        848]
+NotebookOptionsPosition[     41316,        834]
+NotebookOutlinePosition[     41649,        849]
+CellTagsIndexPosition[     41606,        846]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,7 +36,8 @@ Cell[BoxData[{
          RowBox[{"Drop", "[", 
           RowBox[{
            RowBox[{"VertexOutComponent", "[", 
-            RowBox[{"g", ",", "var"}], "]"}], ",", "1"}], "]"}], ",", 
+            RowBox[{"g", ",", "var", ",", " ", "1"}], "]"}], ",", "1"}], 
+          "]"}], ",", 
          RowBox[{"AdjacencyList", "[", 
           RowBox[{"g", ",", "var"}], "]"}]}], "]"}]}], " ", ";", 
       "\[IndentingNewLine]", 
@@ -84,7 +85,7 @@ Cell[BoxData[{
       RowBox[{"currentNode", "=", 
        RowBox[{"Last", "[", "localNodesVisited", "]"}]}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{
          RowBox[{"If", "[", 
@@ -417,178 +418,219 @@ Cell[BoxData[{
          "Remember", " ", "to", " ", "replace", " ", "the", " ", "1", " ", 
           "below", " ", "with", " ", "all", " ", "states"}]}], "*)"}], 
        "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"If", "[", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"displayStates", " ", "\[Equal]", " ", "\"\<First\>\""}], 
+         ",", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"displayStates", " ", "\[Equal]", " ", "\"\<First\>\""}], 
-          ",", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"maxStateLoops", " ", "=", " ", "1"}], ";"}], 
-          "\[IndentingNewLine]", ",", 
+          RowBox[{"maxStateLoops", " ", "=", " ", "1"}], ";"}], 
+         "\[IndentingNewLine]", ",", 
+         RowBox[{"(*", 
+          RowBox[{"Else", ",", " ", 
+           RowBox[{"==", " ", "All"}]}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"maxStateLoops", " ", "=", " ", "numberOfStates"}], ";"}]}],
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"currentState", "=", "1"}], ",", " ", 
+         RowBox[{"currentState", "\[LessEqual]", "maxStateLoops"}], ",", " ", 
+         
+         RowBox[{"currentState", "++"}], ",", " ", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"fV", " ", "=", " ", 
+           RowBox[{"freqVector", "[", 
+            RowBox[{"[", "currentState", "]"}], "]"}]}], ";", " ", 
           RowBox[{"(*", 
-           RowBox[{"Else", ",", " ", 
-            RowBox[{"==", " ", "All"}]}], "*)"}], "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"maxStateLoops", " ", "=", " ", "numberOfStates"}], 
-           ";"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-        RowBox[{"For", "[", 
-         RowBox[{
-          RowBox[{"currentState", "=", "1"}], ",", " ", 
-          RowBox[{"currentState", "\[LessEqual]", "maxStateLoops"}], ",", " ", 
-          RowBox[{"currentState", "++"}], ",", " ", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"fV", " ", "=", " ", 
-            RowBox[{"freqVector", "[", 
-             RowBox[{"[", "currentState", "]"}], "]"}]}], ";", " ", 
-           RowBox[{"(*", 
-            RowBox[{"Frequency", " ", "vector", " ", "of", " ", "1"}], "*)"}],
+           RowBox[{"Frequency", " ", "vector", " ", "of", " ", "1"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"equationList", " ", "=", " ", 
+           RowBox[{"frequencyToEquationList", "[", "fV", "]"}]}], ";", " ", 
+          "\[IndentingNewLine]", 
+          RowBox[{"numberOfFrequencies", " ", "=", " ", 
+           RowBox[{"Length", "[", "equationList", "]"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+             "Print", "[", 
+              "\"\<###########################################################\
+##################################\>\"", "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<Equation List: \>\"", ",", " ", "equationList"}], 
+              "]"}], ";"}], "\[IndentingNewLine]", ","}], 
+           "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+           "For", " ", "Loop", " ", "for", " ", "all", " ", "frequencies", 
+            " ", "of", " ", "a", " ", "given", " ", "state"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"numberOfFrequencies", "\[Equal]", "1"}], ",", 
             "\[IndentingNewLine]", 
-           RowBox[{"equationList", " ", "=", " ", 
-            RowBox[{"frequencyToEquationList", "[", "fV", "]"}]}], ";", " ", 
-           "\[IndentingNewLine]", 
-           RowBox[{"numberOfFrequencies", " ", "=", " ", 
-            RowBox[{"Length", "[", "equationList", "]"}]}], ";", 
-           "\[IndentingNewLine]", "\[IndentingNewLine]", 
-           RowBox[{"If", "[", 
             RowBox[{
-             RowBox[{"debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], 
-             ",", "\[IndentingNewLine]", 
+             RowBox[{"region", "=", 
+              RowBox[{"ImplicitRegion", "[", 
+               RowBox[{
+                RowBox[{"Evaluate", "[", 
+                 RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}], 
+                 "]"}], ",", " ", 
+                RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"finalPower", " ", "=", " ", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{
+                RowBox[{"equationList", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], ",", 
+                RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"finalMeasure", " ", "=", " ", 
+              RowBox[{"Integrate", "[", 
+               RowBox[{"1", ",", 
+                RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"powerOfStates", " ", ",", " ", 
+               RowBox[{"Simplify", "[", "finalPower", "]"}]}], "]"}], ";"}], 
+            "\[IndentingNewLine]", ",", 
+            RowBox[{"(*", 
+             RowBox[{"Else", ",", " ", 
+              RowBox[{"#ofFreq", " ", ">", " ", "1"}]}], "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", 
              RowBox[{
-              RowBox[{
-              "Print", "[", 
-               "\"\<##########################################################\
-###################################\>\"", "]"}], ";", "\[IndentingNewLine]", 
-              RowBox[{"Print", "[", 
-               RowBox[{"\"\<Equation List: \>\"", ",", " ", "equationList"}], 
-               "]"}], ";"}], "\[IndentingNewLine]", ","}], 
-            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-           RowBox[{"(*", 
+             "Need", " ", "to", " ", "subtract", " ", "reward", " ", "of", 
+              " ", "current", " ", "state", " ", "from", " ", "beginning", 
+              " ", "of", " ", "every", " ", "state", " ", "we", " ", "care", 
+              " ", "about"}], "*)"}], "\[IndentingNewLine]", 
             RowBox[{
-            "For", " ", "Loop", " ", "for", " ", "all", " ", "frequencies", 
-             " ", "of", " ", "a", " ", "given", " ", "state"}], "*)"}], 
-           "\[IndentingNewLine]", 
-           RowBox[{"If", "[", 
-            RowBox[{
-             RowBox[{"numberOfFrequencies", "\[Equal]", "1"}], ",", 
+             RowBox[{"preparedInequalityList", " ", "=", " ", 
+              RowBox[{"Simplify", "[", 
+               RowBox[{"equationList", " ", "-", 
+                RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";", 
              "\[IndentingNewLine]", 
-             RowBox[{
-              RowBox[{"region", "=", 
-               RowBox[{"ImplicitRegion", "[", 
-                RowBox[{
-                 RowBox[{"Evaluate", "[", 
-                  RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}], 
-                  "]"}], ",", " ", 
-                 RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
-                "]"}]}], ";", "\[IndentingNewLine]", 
-              RowBox[{"finalPower", " ", "=", " ", 
-               RowBox[{"Integrate", "[", 
-                RowBox[{
-                 RowBox[{"equationList", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}], ",", 
-                 RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
-                "]"}]}], ";", "\[IndentingNewLine]", 
-              RowBox[{"AppendTo", "[", 
-               RowBox[{"powerOfStates", " ", ",", " ", 
-                RowBox[{"Simplify", "[", "finalPower", "]"}]}], "]"}], ";"}], 
-             "\[IndentingNewLine]", ",", 
-             RowBox[{"(*", 
-              RowBox[{"Else", ",", " ", 
-               RowBox[{"#ofFreq", " ", ">", " ", "1"}]}], "*)"}], 
+             RowBox[{"finalPower", " ", "=", " ", "0"}], ";", 
              "\[IndentingNewLine]", 
+             RowBox[{"finalMeasure", " ", "=", " ", 
+              RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
              RowBox[{"(*", 
               RowBox[{
-              "Need", " ", "to", " ", "subtract", " ", "reward", " ", "of", 
-               " ", "current", " ", "state", " ", "from", " ", "beginning", 
-               " ", "of", " ", "every", " ", "state", " ", "we", " ", "care", 
-               " ", "about"}], "*)"}], "\[IndentingNewLine]", 
-             RowBox[{
-              RowBox[{"preparedInequalityList", " ", "=", " ", 
-               RowBox[{"Simplify", "[", 
-                RowBox[{"equationList", " ", "-", 
-                 RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";", 
-              "\[IndentingNewLine]", 
-              RowBox[{"finalPower", " ", "=", " ", "0"}], ";", 
-              "\[IndentingNewLine]", 
-              RowBox[{"(*", 
+              "Begin", " ", "for", " ", "loop", " ", "for", " ", "power", " ",
+                "of", " ", "state"}], "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"For", "[", 
+              RowBox[{
+               RowBox[{"currentReward", "=", "1"}], ",", " ", 
                RowBox[{
-               "Begin", " ", "for", " ", "loop", " ", "for", " ", "power", 
-                " ", "of", " ", "state"}], "*)"}], "\[IndentingNewLine]", 
-              RowBox[{"For", "[", 
+               "currentReward", "\[LessEqual]", "numberOfFrequencies"}], ",", 
+               " ", 
+               RowBox[{"currentReward", "++"}], ",", " ", 
+               "\[IndentingNewLine]", 
                RowBox[{
-                RowBox[{"currentReward", "=", "1"}], ",", " ", 
-                RowBox[{
-                "currentReward", "\[LessEqual]", "numberOfFrequencies"}], ",",
-                 " ", 
-                RowBox[{"currentReward", "++"}], ",", " ", 
+                RowBox[{"ineq", " ", "=", " ", 
+                 RowBox[{"frequencyToInequality", "[", 
+                  RowBox[{"equationList", ",", " ", "currentReward"}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{"Returns", " ", "inequality", " ", "list"}], "*)"}], 
                 "\[IndentingNewLine]", 
                 RowBox[{
-                 RowBox[{"ineq", " ", "=", " ", 
-                  RowBox[{"frequencyToInequality", "[", 
-                   RowBox[{"equationList", ",", " ", "currentReward"}], 
-                   "]"}]}], ";", "\[IndentingNewLine]", 
-                 RowBox[{"(*", 
-                  RowBox[{"Returns", " ", "inequality", " ", "list"}], "*)"}],
-                  "\[IndentingNewLine]", 
-                 RowBox[{
-                 "hyperCubeRegionBounds", " ", "=", " ", 
-                  "hyperCubeRegionBoundsGlobal"}], ";", "\[IndentingNewLine]", 
-                 RowBox[{"test2", " ", "=", 
-                  RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}]}], 
-                 ";", "\[IndentingNewLine]", 
-                 RowBox[{"test", " ", "=", " ", 
-                  RowBox[{"Join", "[", 
-                   RowBox[{
-                    RowBox[{"{", "ineq", "}"}], ",", " ", "test2"}], "]"}]}], 
-                 ";", "\n", "              ", 
-                 RowBox[{"region", "=", 
-                  RowBox[{"ImplicitRegion", "[", 
-                   RowBox[{"test", ",", " ", 
-                    RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
-                   "]"}]}], ";", "\[IndentingNewLine]", 
-                 RowBox[{"interm", " ", "=", " ", 
-                  RowBox[{"Integrate", "[", 
-                   RowBox[{
-                    RowBox[{"preparedInequalityList", "[", 
+                "hyperCubeRegionBounds", " ", "=", " ", 
+                 "hyperCubeRegionBoundsGlobal"}], ";", "\[IndentingNewLine]", 
+                
+                RowBox[{"test2", " ", "=", 
+                 RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}]}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{"test", " ", "=", " ", 
+                 RowBox[{"Join", "[", 
+                  RowBox[{
+                   RowBox[{"{", "ineq", "}"}], ",", " ", "test2"}], "]"}]}], 
+                ";", "\n", "              ", 
+                RowBox[{"region", "=", 
+                 RowBox[{"ImplicitRegion", "[", 
+                  RowBox[{"test", ",", " ", 
+                   RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                
+                RowBox[{"interm", " ", "=", " ", 
+                 RowBox[{"Integrate", "[", 
+                  RowBox[{
+                   RowBox[{"preparedInequalityList", "[", 
                     RowBox[{"[", "currentReward", "]"}], "]"}], ",", 
-                    RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+                   RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"interm2", " ", "=", " ", 
+                 RowBox[{"Integrate", "[", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"hyperCubeVariables", "\[Element]", "region"}], 
+                   ",", " ", 
+                   RowBox[{"Assumptions", " ", "->", 
+                    RowBox[{
+                    "0", " ", "<", "  ", "\[Gamma]", " ", "<", " ", "1"}]}]}],
                    "]"}]}], ";", "\[IndentingNewLine]", 
-                 RowBox[{"finalPower", " ", "+=", "interm"}], ";", 
-                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
-                 RowBox[{"If", "[", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"finalMeasure", " ", ",", "  ", 
+                  RowBox[{"Simplify", "[", "interm2", "]"}]}], "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"finalPower", " ", "+=", 
+                 RowBox[{"Simplify", "[", "interm", "]"}]}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], ",", 
+                  "\[IndentingNewLine]", 
                   RowBox[{
                    RowBox[{
-                   "debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], ",",
-                    "\[IndentingNewLine]", 
-                   RowBox[{
-                    RowBox[{
-                    "Print", "[", 
+                   "Print", "[", 
                     "\"\<+++++++++++++++++++++++++++++++++++++++++++++++++++++\
 ++++++++++++++++++++++++\>\"", "]"}], ";", "\[IndentingNewLine]", 
-                    RowBox[{"Print", "[", 
+                   RowBox[{"Print", "[", 
                     RowBox[{
                     "\"\<Current Frequency Index: \>\"", ",", " ", 
                     "currentReward"}], "]"}], ";", "\[IndentingNewLine]", 
-                    RowBox[{"Print", "[", 
+                   RowBox[{"Print", "[", 
                     RowBox[{"\"\<Inequalities used: \>\"", ",", " ", "ineq"}],
                      "]"}], ";", "\[IndentingNewLine]", 
-                    RowBox[{"Print", "[", 
-                    RowBox[{"\"\<Integration: \>\"", ",", " ", "interm"}], 
-                    "]"}], ";"}], "\[IndentingNewLine]", ","}], 
-                  "\[IndentingNewLine]", "]"}], ";"}]}], 
-               "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-              RowBox[{"initialPowerValue", " ", "=", " ", 
-               RowBox[{"1", "/", "2"}]}], ";", 
-              RowBox[{"(*", 
-               RowBox[{
-               "Change", " ", "for", " ", "other", " ", "distributions"}], 
-               "*)"}], "\[IndentingNewLine]", 
-              RowBox[{"AppendTo", "[", 
-               RowBox[{"powerOfStates", " ", ",", " ", 
-                RowBox[{"initialPowerValue", "  ", "+", " ", 
-                 RowBox[{"Simplify", "[", "finalPower", "]"}]}]}], "]"}], 
-              ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
-         "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
-       "\[IndentingNewLine]", 
+                   RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Integration: \>\"", ",", " ", 
+                    RowBox[{"Simplify", "[", "interm", "]"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Measure: \>\"", ",", " ", 
+                    RowBox[{"Simplify", "[", "interm2", "]"}]}], "]"}], ";"}],
+                   "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", "]"}],
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"initialPowerValue", " ", "=", " ", 
+              RowBox[{"1", "/", "2"}]}], ";", 
+             RowBox[{"(*", 
+              RowBox[{
+              "Change", " ", "for", " ", "other", " ", "distributions"}], 
+              "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"powerOfStates", " ", ",", " ", 
+               RowBox[{"initialPowerValue", "  ", "+", " ", 
+                RowBox[{"Simplify", "[", "finalPower", "]"}]}]}], "]"}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]",
+         "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"debugLevel", " ", "\[Equal]", " ", "\"\<Measure\>\""}], ",",
+          "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<Frequency: \>\"", ",", " ", 
+            RowBox[{"freqVector", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<Measure: \>\"", ",", " ", "finalMeasure"}], "]"}], 
+          ";"}], "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
        RowBox[{"If", "[", 
         RowBox[{
          RowBox[{"displayStates", " ", "\[Equal]", " ", "\"\<First\>\""}], 
@@ -769,8 +811,22 @@ Cell[BoxData[{
    3.7799308014587803`*^9}, {3.779930838821253*^9, 3.7799308420365257`*^9}, {
    3.779934535855789*^9, 3.779934583192368*^9}, {3.77993470074109*^9, 
    3.779934718590666*^9}, {3.7799348872836847`*^9, 3.779934972203906*^9}, {
-   3.7799353862316303`*^9, 3.779935413663052*^9}},
- CellLabel->"In[16]:=",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+   3.7799353862316303`*^9, 3.779935413663052*^9}, {3.7799898985623407`*^9, 
+   3.779989924820498*^9}, {3.779989981621558*^9, 3.779990041865241*^9}, {
+   3.7799900833764772`*^9, 3.779990089259982*^9}, {3.77999012840508*^9, 
+   3.7799901418230762`*^9}, {3.7799905917527943`*^9, 3.779990635172501*^9}, {
+   3.779991130276742*^9, 3.7799911307922163`*^9}, {3.7799911860634604`*^9, 
+   3.77999118827234*^9}, {3.780052988809618*^9, 3.7800530431720657`*^9}, {
+   3.7800537075225058`*^9, 3.780053707729631*^9}, {3.780054734772044*^9, 
+   3.78005473925914*^9}, {3.7800552620360317`*^9, 3.7800552667863503`*^9}, {
+   3.7800565036817303`*^9, 3.780056555763626*^9}, {3.780056603137578*^9, 
+   3.7800566096990833`*^9}, {3.780056644481427*^9, 3.780056653816078*^9}, {
+   3.780056703260977*^9, 3.780056792235024*^9}, 3.780056831839796*^9, {
+   3.780056872662372*^9, 3.7800568828068447`*^9}, 3.780057045765167*^9, {
+   3.78005901848982*^9, 3.7800590668407288`*^9}, {3.7800604756845913`*^9, 
+   3.780060485658757*^9}, {3.7800605532021017`*^9, 
+   3.7800605618233852`*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
+7e584a49f672"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
  CellChangeTimes->{3.77740335219701*^9},
@@ -792,8 +848,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 37683, 752, 4320, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
-Cell[38244, 774, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+Cell[558, 20, 40586, 808, 4540, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[41147, 830, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 }
 ]
 *)
