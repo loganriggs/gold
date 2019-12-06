@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41699,        848]
-NotebookOptionsPosition[     41316,        834]
-NotebookOutlinePosition[     41649,        849]
-CellTagsIndexPosition[     41606,        846]
+NotebookDataLength[     45625,        919]
+NotebookOptionsPosition[     45242,        905]
+NotebookOutlinePosition[     45575,        920]
+CellTagsIndexPosition[     45532,        917]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -334,11 +334,13 @@ Cell[BoxData[{
        ";", "\[IndentingNewLine]", 
        RowBox[{"output", " ", "=", " ", 
         RowBox[{"FullSimplify", "[", 
-         RowBox[{"Reduce", "[", 
-          RowBox[{"inList", ",", "hyperCubeVariables", ",", " ", "Reals"}], 
-          "]"}], "]"}]}], ";", "\[IndentingNewLine]", "output"}]}], 
-     "\[IndentingNewLine]", "]"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Reduce", "[", 
+           RowBox[{"inList", ",", "hyperCubeVariables", ",", " ", "Reals"}], 
+           "]"}], " ", "/.", 
+          RowBox[{"_Equal", "\[Rule]", "False"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "output"}]}], "\[IndentingNewLine]", "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -537,6 +539,46 @@ Cell[BoxData[{
                 RowBox[{"(*", 
                  RowBox[{"Returns", " ", "inequality", " ", "list"}], "*)"}], 
                 "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{
+                   "Print", "[", 
+                    "\"\<+++++++++++++++++++++++++++++++++++++++++++++++++++++\
+++++++++++++++++++++++++\>\"", "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Print", "[", 
+                    RowBox[{
+                    "\"\<Current Frequency Index: \>\"", ",", " ", 
+                    "currentReward"}], "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Inequalities used: \>\"", ",", " ", "ineq"}],
+                     "]"}], ";"}], "\[IndentingNewLine]", ","}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{
+                  "If", " ", "no", " ", "inequalities", " ", "exist", 
+                   RowBox[{"(", 
+                    RowBox[{"measure", " ", "0", " ", "globally"}], ")"}]}], 
+                  ",", " ", 
+                  RowBox[{
+                  "then", " ", "skip", " ", "to", " ", "next", " ", 
+                   "loop"}]}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"ineq", " ", "===", " ", "False"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"Continue", "[", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "Find", " ", "Region", " ", "of", " ", "integration"}], 
+                 "*)"}], "\[IndentingNewLine]", 
                 RowBox[{
                 "hyperCubeRegionBounds", " ", "=", " ", 
                  "hyperCubeRegionBoundsGlobal"}], ";", "\[IndentingNewLine]", 
@@ -555,6 +597,36 @@ Cell[BoxData[{
                    RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
                   "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
                 
+                RowBox[{"(*", 
+                 RowBox[{"Eliminate", " ", 
+                  RowBox[{"(", "local", ")"}], " ", "zero", " ", "measure", 
+                  " ", "regions"}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"ineq2", " ", "=", " ", 
+                 RowBox[{
+                  RowBox[{"Reduce", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"1", ">", "\[Gamma]", ">", "0"}], "&&", 
+                    RowBox[{"First", "@", "region"}]}], ",", 
+                    "hyperCubeVariables"}], "]"}], "/.", 
+                  RowBox[{"_Equal", "\[Rule]", "False"}]}]}], ";", " ", 
+                "\[IndentingNewLine]", 
+                RowBox[{"test", " ", "=", " ", 
+                 RowBox[{"Join", "[", 
+                  RowBox[{
+                   RowBox[{"{", "ineq2", "}"}], ",", " ", "test2"}], "]"}]}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{"region", " ", "=", " ", 
+                 RowBox[{"ImplicitRegion", "[", 
+                  RowBox[{"test", ",", " ", 
+                   RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
+                RowBox[{"interm2", " ", "=", " ", 
+                 RowBox[{"Integrate", "[", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", 
                 RowBox[{"interm", " ", "=", " ", 
                  RowBox[{"Integrate", "[", 
                   RowBox[{
@@ -562,15 +634,6 @@ Cell[BoxData[{
                     RowBox[{"[", "currentReward", "]"}], "]"}], ",", 
                    RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
                   "]"}]}], ";", "\[IndentingNewLine]", 
-                RowBox[{"interm2", " ", "=", " ", 
-                 RowBox[{"Integrate", "[", 
-                  RowBox[{"1", ",", 
-                   RowBox[{"hyperCubeVariables", "\[Element]", "region"}], 
-                   ",", " ", 
-                   RowBox[{"Assumptions", " ", "->", 
-                    RowBox[{
-                    "0", " ", "<", "  ", "\[Gamma]", " ", "<", " ", "1"}]}]}],
-                   "]"}]}], ";", "\[IndentingNewLine]", 
                 RowBox[{"AppendTo", "[", 
                  RowBox[{"finalMeasure", " ", ",", "  ", 
                   RowBox[{"Simplify", "[", "interm2", "]"}]}], "]"}], ";", 
@@ -584,17 +647,6 @@ Cell[BoxData[{
                   "debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], ",", 
                   "\[IndentingNewLine]", 
                   RowBox[{
-                   RowBox[{
-                   "Print", "[", 
-                    "\"\<+++++++++++++++++++++++++++++++++++++++++++++++++++++\
-++++++++++++++++++++++++\>\"", "]"}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Print", "[", 
-                    RowBox[{
-                    "\"\<Current Frequency Index: \>\"", ",", " ", 
-                    "currentReward"}], "]"}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Print", "[", 
-                    RowBox[{"\"\<Inequalities used: \>\"", ",", " ", "ineq"}],
-                     "]"}], ";", "\[IndentingNewLine]", 
                    RowBox[{"Print", "[", 
                     RowBox[{"\"\<Integration: \>\"", ",", " ", 
                     RowBox[{"Simplify", "[", "interm", "]"}]}], "]"}], ";", 
@@ -824,8 +876,27 @@ Cell[BoxData[{
    3.780056703260977*^9, 3.780056792235024*^9}, 3.780056831839796*^9, {
    3.780056872662372*^9, 3.7800568828068447`*^9}, 3.780057045765167*^9, {
    3.78005901848982*^9, 3.7800590668407288`*^9}, {3.7800604756845913`*^9, 
-   3.780060485658757*^9}, {3.7800605532021017`*^9, 
-   3.7800605618233852`*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
+   3.780060485658757*^9}, {3.7800605532021017`*^9, 3.7800605618233852`*^9}, {
+   3.7809245974854097`*^9, 3.780924620423959*^9}, {3.7810316283839207`*^9, 
+   3.7810316294779882`*^9}, 3.781031728566176*^9, {3.781036977759904*^9, 
+   3.781037027490982*^9}, {3.78103725745052*^9, 3.781037264916071*^9}, {
+   3.7810373795477133`*^9, 3.781037437242601*^9}, {3.7811039516496*^9, 
+   3.78110395735918*^9}, {3.7832666098924103`*^9, 3.783266663802129*^9}, 
+   3.7832668078807993`*^9, {3.78326693877827*^9, 3.78326699885122*^9}, {
+   3.7832671734825068`*^9, 3.78326718578192*^9}, {3.78326722655935*^9, 
+   3.783267248653061*^9}, 3.7832673151771393`*^9, {3.783267355990068*^9, 
+   3.783267407437842*^9}, {3.783267672987908*^9, 3.7832676756029778`*^9}, {
+   3.783268855716737*^9, 3.783268869979107*^9}, {3.78326893250904*^9, 
+   3.78326896840333*^9}, {3.783269023559649*^9, 3.783269041889596*^9}, {
+   3.7832691156908007`*^9, 3.7832691200033503`*^9}, {3.783270359789908*^9, 
+   3.7832703752876587`*^9}, {3.7846392081358767`*^9, 3.784639272156361*^9}, 
+   3.784639329667238*^9, {3.784639360841097*^9, 3.784639376424368*^9}, {
+   3.784639409371991*^9, 3.784639458138404*^9}, {3.78464040518876*^9, 
+   3.784640436203302*^9}, {3.7846432987962713`*^9, 3.784643382761675*^9}, {
+   3.78464341931321*^9, 3.784643431700968*^9}, {3.784643634797244*^9, 
+   3.784643639257195*^9}, {3.784643705421924*^9, 3.784643766126745*^9}, {
+   3.784643822169676*^9, 3.7846438819402647`*^9}, {3.784644383684045*^9, 
+   3.784644384031864*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
 7e584a49f672"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
@@ -833,7 +904,7 @@ Cell[BoxData["\[IndentingNewLine]"], "Input",
  CellLabel->"In[13]:=",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 },
 WindowSize->{960, 1016},
-WindowMargins->{{0, Automatic}, {0, Automatic}},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -848,8 +919,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 40586, 808, 4540, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
-Cell[41147, 830, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+Cell[558, 20, 44512, 879, 4885, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[45073, 901, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 }
 ]
 *)

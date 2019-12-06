@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40331,        895]
-NotebookOptionsPosition[     39588,        874]
-NotebookOutlinePosition[     39921,        889]
-CellTagsIndexPosition[     39878,        886]
+NotebookDataLength[     40111,        945]
+NotebookOptionsPosition[     38228,        912]
+NotebookOutlinePosition[     38561,        927]
+CellTagsIndexPosition[     38518,        924]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -160,6 +160,20 @@ Cell[BoxData[
     RowBox[{"vertexAndNodes3", " ", "=", " ", 
      RowBox[{"{", 
       RowBox[{
+       RowBox[{"1", "\[Rule]", "2"}], ",", "  ", 
+       RowBox[{"1", "\[Rule]", "3"}], ",", " ", 
+       RowBox[{"3", "\[Rule]", "4"}], ",", " ", 
+       RowBox[{"4", "\[Rule]", "4"}], ",", " ", 
+       RowBox[{"2", "\[Rule]", "5"}], ",", " ", 
+       RowBox[{"5", "\[Rule]", "5"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"powerOfGraph", "[", 
+    RowBox[{
+    "vertexAndNodes3", ",", " ", "\"\<First\>\"", ",", " ", "\"\<Basic\>\""}],
+     "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"vertexAndNodes3", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
        RowBox[{"1", "\[Rule]", "2"}], ",", 
        RowBox[{"2", "\[Rule]", "1"}], ",", " ", 
        RowBox[{"2", "\[Rule]", "2"}], ",", " ", 
@@ -258,67 +272,506 @@ Cell[BoxData[
    3.780059363201977*^9, 3.780059389726495*^9}, {3.780059480680544*^9, 
    3.780059481350329*^9}, {3.7800605087620907`*^9, 3.780060518487041*^9}, {
    3.780060583603611*^9, 3.780060584495997*^9}, {3.7800606562960033`*^9, 
-   3.780060659899889*^9}},ExpressionUUID->"25028ae1-0aca-4182-8481-\
-a69a6ed08f15"],
+   3.780060673151355*^9}, {3.781104211167141*^9, 3.781104279568006*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"25028ae1-0aca-4182-8481-a69a6ed08f15"],
 
 Cell[CellGroupData[{
 
+Cell[BoxData["\<\"Initial Graph:\"\>"], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.7811042831323843`*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"8c9bf719-9cd1-4a92-9dbf-27831e96dd82"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{1, 2, 3, 4, 
+      5}, {{{1, 2}, {1, 3}, {3, 4}, {4, 4}, {2, 5}, {5, 5}}, Null}, {
+      VertexLabels -> {"Name"}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+        ArrowBox[{{0., 2.}, {0., 1.}}, 0.02261146496815286], 
+        ArrowBox[{{0., 2.}, {-1., 1.}}, 0.02261146496815286], 
+        ArrowBox[{{0., 1.}, {0., 0.}}, 0.02261146496815286], 
+        ArrowBox[{{-1., 1.}, {-1., 0.}}, 0.02261146496815286], 
+        ArrowBox[BezierCurveBox[{{-1., 
+         0.}, {-0.7866975262994657, -0.09892281491224131}, \
+{-0.7236446103907415, -0.32127571243010034`}, {-0.7895606283384549, \
+-0.4634567929630928}, {-1.2104393716615451`, -0.46345679296309283`}, \
+{-1.2763553896092585`, -0.32127571243010034`}, {-1.2133024737005342`, \
+-0.09892281491224131}, {-1., 0.}},
+         SplineDegree->7], 0.02261146496815286], 
+        ArrowBox[BezierCurveBox[{{0., 0.}, {
+         0.21330247370053435`, -0.09892281491224131}, {
+         0.2763553896092585, -0.32127571243010034`}, {
+         0.21043937166154517`, -0.4634567929630928}, {-0.21043937166154508`, \
+-0.46345679296309283`}, {-0.2763553896092585, -0.32127571243010034`}, \
+{-0.2133024737005343, -0.09892281491224131}, {0., 0.}},
+         SplineDegree->7], 0.02261146496815286]}, 
+       {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+        0.7]}], {DiskBox[{0., 2.}, 0.02261146496815286], 
+         InsetBox["1", 
+          Offset[{2, 2}, {0.02261146496815286, 2.022611464968153}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 1.}, 0.02261146496815286], 
+         InsetBox["2", 
+          Offset[{2, 2}, {0.02261146496815286, 1.0226114649681528}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-1., 1.}, 0.02261146496815286], 
+         InsetBox["3", 
+          Offset[{2, 2}, {-0.9773885350318472, 1.0226114649681528}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-1., 0.}, 0.02261146496815286], 
+         InsetBox["4", 
+          Offset[{2, 2}, {-0.9773885350318472, 0.02261146496815286}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.02261146496815286], 
+         InsetBox["5", 
+          Offset[{2, 2}, {0.02261146496815286, 0.02261146496815286}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104283154168*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"b28cff9b-9fba-429b-a220-f81027d76c85"],
+
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Frequency: \"\>", "\[InvisibleSpace]", 
+  RowBox[{"\<\"Frequency Vector: \"\>", "\[InvisibleSpace]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"1", ",", 
-       FractionBox["\[Gamma]", 
-        RowBox[{"1", "-", "\[Gamma]"}]], ",", "0", ",", "0", ",", "0"}], 
-      "}"}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "\[Gamma]", ",", "0", ",", "0", ",", 
+         FractionBox[
+          SuperscriptBox["\[Gamma]", "2"], 
+          RowBox[{"1", "-", "\[Gamma]"}]]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "\[Gamma]", ",", 
+         FractionBox[
+          SuperscriptBox["\[Gamma]", "2"], 
+          RowBox[{"1", "-", "\[Gamma]"}]], ",", "0"}], "}"}]}], "}"}], ",", 
      RowBox[{"{", 
-      RowBox[{"1", ",", "0", ",", "\[Gamma]", ",", 
-       FractionBox[
-        SuperscriptBox["\[Gamma]", "2"], 
-        RowBox[{"1", "-", "\[Gamma]"}]], ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", 
+        FractionBox["\[Gamma]", 
+         RowBox[{"1", "-", "\[Gamma]"}]]}], "}"}], "}"}], ",", 
      RowBox[{"{", 
-      RowBox[{"1", ",", "0", ",", "\[Gamma]", ",", "0", ",", 
-       FractionBox[
-        SuperscriptBox["\[Gamma]", "2"], 
-        RowBox[{"1", "-", "\[Gamma]"}]]}], "}"}]}], "}"}]}],
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "1", ",", 
+        FractionBox["\[Gamma]", 
+         RowBox[{"1", "-", "\[Gamma]"}]], ",", "0"}], "}"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", 
+        FractionBox["1", 
+         RowBox[{"1", "-", "\[Gamma]"}]], ",", "0"}], "}"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", 
+        FractionBox["1", 
+         RowBox[{"1", "-", "\[Gamma]"}]]}], "}"}], "}"}]}], "}"}]}],
   SequenceForm[
-  "Frequency: ", {{
-    1, (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma], 0, 0, 0}, {
-    1, 0, $CellContext`\[Gamma], (
-       1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^2, 0}, {
-    1, 0, $CellContext`\[Gamma], 
-     0, (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^2}}],
+  "Frequency Vector: ", {{{
+     1, $CellContext`\[Gamma], 0, 
+      0, (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^2}, {
+     1, 0, $CellContext`\[Gamma], (
+        1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^2, 0}}, {{
+     0, 1, 0, 0, (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]}}, {{
+     0, 0, 1, (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma], 0}}, {{
+     0, 0, 0, (1 - $CellContext`\[Gamma])^(-1), 0}}, {{
+     0, 0, 0, 0, (1 - $CellContext`\[Gamma])^(-1)}}}],
   Editable->False]], "Print",
  CellChangeTimes->{
-  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}},
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104283161503*^9},
  CellLabel->
   "During evaluation of \
-In[177]:=",ExpressionUUID->"d70e7249-9406-4719-b01e-b6515d407603"],
+In[50]:=",ExpressionUUID->"830e83f3-9b73-40ee-affe-b4ddb3333dd4"],
+
+Cell[BoxData["\<\"############################################################\
+#################################\"\>"], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104283163506*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"54d2e504-3c2f-4714-be84-8b715239910c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Equation List: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"r", "[", "1", "]"}], "+", 
+      RowBox[{"\[Gamma]", " ", 
+       RowBox[{"r", "[", "2", "]"}]}], "+", 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        RowBox[{"r", "[", "5", "]"}]}], 
+       RowBox[{"1", "-", "\[Gamma]"}]]}], ",", 
+     RowBox[{
+      RowBox[{"r", "[", "1", "]"}], "+", 
+      RowBox[{"\[Gamma]", " ", 
+       RowBox[{"r", "[", "3", "]"}]}], "+", 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        RowBox[{"r", "[", "4", "]"}]}], 
+       RowBox[{"1", "-", "\[Gamma]"}]]}]}], "}"}]}],
+  SequenceForm[
+  "Equation List: ", {$CellContext`r[
+     1] + $CellContext`\[Gamma] $CellContext`r[
+      2] + (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^2 \
+$CellContext`r[5], $CellContext`r[
+     1] + $CellContext`\[Gamma] $CellContext`r[
+      3] + (1 - $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^2 \
+$CellContext`r[4]}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.78110428316495*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"7f781b38-f0e9-40a0-814c-a40cd07b8b60"],
+
+Cell[BoxData["\<\"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\
++++++++++++++++++\"\>"], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104283166301*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"06461a6f-22f2-49c1-8f8d-6ae6daa61c7d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Current Frequency Index: \"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["Current Frequency Index: ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.7811042831674557`*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"65415874-1ffd-4a91-8f8c-1d8cfebc80e0"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Inequalities used: \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"r", "[", "2", "]"}], "+", 
+     RowBox[{"\[Gamma]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"r", "[", "3", "]"}], "+", 
+        RowBox[{"r", "[", "5", "]"}]}], ")"}]}]}], ">", 
+    RowBox[{
+     RowBox[{"r", "[", "3", "]"}], "+", 
+     RowBox[{"\[Gamma]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"r", "[", "2", "]"}], "+", 
+        RowBox[{"r", "[", "4", "]"}]}], ")"}]}]}]}]}],
+  SequenceForm[
+  "Inequalities used: ", $CellContext`r[
+     2] + $CellContext`\[Gamma] ($CellContext`r[3] + $CellContext`r[
+       5]) > $CellContext`r[
+     3] + $CellContext`\[Gamma] ($CellContext`r[2] + $CellContext`r[4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104283168996*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"9c833ef9-e4c4-411e-b18c-161244342fad"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration: \"\>", "\[InvisibleSpace]", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{
+             RowBox[{"-", "1"}], "+", 
+             RowBox[{"8", " ", "\[Gamma]"}], "+", 
+             RowBox[{"17", " ", 
+              SuperscriptBox["\[Gamma]", "2"]}], "+", 
+             RowBox[{"16", " ", 
+              SuperscriptBox["\[Gamma]", "3"]}]}], 
+            RowBox[{"120", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "1"}], "+", "\[Gamma]"}], ")"}], " ", 
+             "\[Gamma]"}]]}], 
+          RowBox[{
+           RowBox[{"2", " ", "\[Gamma]"}], "\[GreaterEqual]", "1"}]},
+         {
+          FractionBox[
+           RowBox[{"\[Gamma]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "40"}], "+", 
+              RowBox[{"90", " ", "\[Gamma]"}], "-", 
+              RowBox[{"65", " ", 
+               SuperscriptBox["\[Gamma]", "2"]}], "+", 
+              RowBox[{"16", " ", 
+               SuperscriptBox["\[Gamma]", "3"]}]}], ")"}]}], 
+           RowBox[{"120", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "1"}], "+", "\[Gamma]"}], ")"}], "3"]}]], 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True]}],
+  SequenceForm["Integration: ", 
+   Piecewise[{{
+     Rational[-1, 
+        120] (-1 + $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^(-1) (-1 + 
+       8 $CellContext`\[Gamma] + 17 $CellContext`\[Gamma]^2 + 
+       16 $CellContext`\[Gamma]^3), 2 $CellContext`\[Gamma] >= 1}}, 
+    Rational[1, 
+      120] (-1 + $CellContext`\[Gamma])^(-3) $CellContext`\[Gamma] (-40 + 
+     90 $CellContext`\[Gamma] - 65 $CellContext`\[Gamma]^2 + 
+     16 $CellContext`\[Gamma]^3)]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104288679613*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"63b787ae-878f-44a8-b10d-c54ce427304e"],
 
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Measure: \"\>", "\[InvisibleSpace]", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"3", "-", "\[Gamma]"}], "6"], ",", 
-     FractionBox[
-      RowBox[{"3", "+", "\[Gamma]"}], "12"], ",", 
-     FractionBox[
-      RowBox[{"3", "+", "\[Gamma]"}], "12"]}], "}"}]}],
-  SequenceForm[
-  "Measure: ", {
-   Rational[1, 6] (3 - $CellContext`\[Gamma]), 
-    Rational[1, 12] (3 + $CellContext`\[Gamma]), 
-    Rational[1, 12] (3 + $CellContext`\[Gamma])}],
+   FractionBox["1", "2"]}],
+  SequenceForm["Measure: ", 
+   Rational[1, 2]],
   Editable->False]], "Print",
  CellChangeTimes->{
-  3.780060522970726*^9, {3.780060568230826*^9, 3.780060589093528*^9}},
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.7811042886821623`*^9},
  CellLabel->
   "During evaluation of \
-In[177]:=",ExpressionUUID->"031c2884-9edf-422c-a2d5-ec1221a6a6a2"]
+In[50]:=",ExpressionUUID->"54b31125-e582-417c-abcf-1ef47a45a915"],
+
+Cell[BoxData["\<\"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\
++++++++++++++++++\"\>"], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.7811042886881027`*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"11b91333-b20c-44dd-8059-afc66c88573e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Current Frequency Index: \"\>", "\[InvisibleSpace]", "2"}],
+  SequenceForm["Current Frequency Index: ", 2],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104288690156*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"7e618b2d-844b-4298-8f13-1001ba5b3d4c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Inequalities used: \"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"r", "[", "2", "]"}], "+", 
+     RowBox[{"\[Gamma]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"r", "[", "3", "]"}], "+", 
+        RowBox[{"r", "[", "5", "]"}]}], ")"}]}]}], "<", 
+    RowBox[{
+     RowBox[{"r", "[", "3", "]"}], "+", 
+     RowBox[{"\[Gamma]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"r", "[", "2", "]"}], "+", 
+        RowBox[{"r", "[", "4", "]"}]}], ")"}]}]}]}]}],
+  SequenceForm[
+  "Inequalities used: ", $CellContext`r[
+     2] + $CellContext`\[Gamma] ($CellContext`r[3] + $CellContext`r[
+       5]) < $CellContext`r[
+     3] + $CellContext`\[Gamma] ($CellContext`r[2] + $CellContext`r[4])],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104288691436*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"9544ca77-5fa8-4513-945e-3fe52ab587f0"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration: \"\>", "\[InvisibleSpace]", 
+   TagBox[GridBox[{
+      {"\[Piecewise]", GridBox[{
+         {
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{
+             RowBox[{"-", "1"}], "+", 
+             RowBox[{"8", " ", "\[Gamma]"}], "+", 
+             RowBox[{"17", " ", 
+              SuperscriptBox["\[Gamma]", "2"]}], "+", 
+             RowBox[{"16", " ", 
+              SuperscriptBox["\[Gamma]", "3"]}]}], 
+            RowBox[{"120", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "1"}], "+", "\[Gamma]"}], ")"}], " ", 
+             "\[Gamma]"}]]}], 
+          RowBox[{
+           RowBox[{"2", " ", "\[Gamma]"}], "\[GreaterEqual]", "1"}]},
+         {
+          FractionBox[
+           RowBox[{"\[Gamma]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "40"}], "+", 
+              RowBox[{"90", " ", "\[Gamma]"}], "-", 
+              RowBox[{"65", " ", 
+               SuperscriptBox["\[Gamma]", "2"]}], "+", 
+              RowBox[{"16", " ", 
+               SuperscriptBox["\[Gamma]", "3"]}]}], ")"}]}], 
+           RowBox[{"120", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "1"}], "+", "\[Gamma]"}], ")"}], "3"]}]], 
+          TagBox["True",
+           "PiecewiseDefault",
+           AutoDelete->True]}
+        },
+        AllowedDimensions->{2, Automatic},
+        Editable->True,
+        GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.84]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}},
+        Selectable->True]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.35]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    "Piecewise",
+    DeleteWithContents->True,
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False,
+    StripWrapperBoxes->True]}],
+  SequenceForm["Integration: ", 
+   Piecewise[{{
+     Rational[-1, 
+        120] (-1 + $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]^(-1) (-1 + 
+       8 $CellContext`\[Gamma] + 17 $CellContext`\[Gamma]^2 + 
+       16 $CellContext`\[Gamma]^3), 2 $CellContext`\[Gamma] >= 1}}, 
+    Rational[1, 
+      120] (-1 + $CellContext`\[Gamma])^(-3) $CellContext`\[Gamma] (-40 + 
+     90 $CellContext`\[Gamma] - 65 $CellContext`\[Gamma]^2 + 
+     16 $CellContext`\[Gamma]^3)]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.781104294182232*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"c16b0466-64f9-4f93-a4d1-e5578137330c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Measure: \"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"]}],
+  SequenceForm["Measure: ", 
+   Rational[1, 2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.780060522970726*^9, {3.780060568230826*^9, 3.7800605890906*^9}, 
+   3.780060673602023*^9, 3.781104095463636*^9, {3.7811042329988956`*^9, 
+   3.781104247912284*^9}, 3.7811042941841707`*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"ea4384e8-c9e4-4253-9e59-fb7438152898"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -326,58 +779,123 @@ Cell[BoxData[
   NamespaceBox["NetworkGraphics",
    DynamicModuleBox[{Typeset`graph = HoldComplete[
      Graph[{1, 2, 3, 4, 
-      5}, {{{1, 2}, {2, 2}, {1, 3}, {3, 4}, {4, 4}, {3, 5}, {5, 5}}, Null}, {
+      5}, {{{1, 2}, {1, 3}, {3, 4}, {4, 4}, {2, 5}, {5, 5}}, Null}, {
       VertexLabels -> {
         1 -> Placed[{
-           "Name", Rational[
-             1, 2] + (12 - 12 $CellContext`\[Gamma])^(-1) (
-              8 $CellContext`\[Gamma] + $CellContext`\[Gamma]^3)}, {
-           Above, Below}]}}]]}, 
+           "Name", Rational[1, 2] + 
+            Piecewise[{{
+               Rational[-1, 
+                  60] (-1 + $CellContext`\[Gamma])^(-1) \
+$CellContext`\[Gamma]^(-1) (-1 + 8 $CellContext`\[Gamma] + 
+                 17 $CellContext`\[Gamma]^2 + 16 $CellContext`\[Gamma]^3), 
+                2 $CellContext`\[Gamma] >= 1}}, 
+              Rational[
+               1, 60] (-1 + $CellContext`\[Gamma])^(-3) $CellContext`\[Gamma] \
+(-40 + 90 $CellContext`\[Gamma] - 65 $CellContext`\[Gamma]^2 + 
+               16 $CellContext`\[Gamma]^3)]}, {Above, Below}]}}]]}, 
     TagBox[GraphicsGroupBox[{
        {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
         ArrowBox[{{0., 2.}, {0., 1.}}, 0.02261146496815286], 
-        ArrowBox[{{0., 2.}, {1., 1.}}, 0.02261146496815286], 
-        ArrowBox[BezierCurveBox[{{0., 1.}, {0.23366115283487018`, 
-         0.8916354856413141}, {0.3027321615542393, 0.6480600902469824}, {
-         0.2305247816924834, 0.4923085201302252}, {-0.2305247816924833, 
-         0.49230852013022514`}, {-0.3027321615542393, 
-         0.6480600902469824}, {-0.23366115283487013`, 0.8916354856413141}, {
-         0., 1.}},
+        ArrowBox[{{0., 2.}, {-1., 1.}}, 0.02261146496815286], 
+        ArrowBox[{{0., 1.}, {0., 0.}}, 0.02261146496815286], 
+        ArrowBox[{{-1., 1.}, {-1., 0.}}, 0.02261146496815286], 
+        ArrowBox[BezierCurveBox[{{-1., 
+         0.}, {-0.7866975262994657, -0.09892281491224131}, \
+{-0.7236446103907415, -0.32127571243010034`}, {-0.7895606283384549, \
+-0.4634567929630928}, {-1.2104393716615451`, -0.46345679296309283`}, \
+{-1.2763553896092585`, -0.32127571243010034`}, {-1.2133024737005342`, \
+-0.09892281491224131}, {-1., 0.}},
          SplineDegree->7], 0.02261146496815286], 
-        ArrowBox[{{1., 1.}, {0., 0.}}, 0.02261146496815286], 
-        ArrowBox[{{1., 1.}, {1., 0.}}, 0.02261146496815286], 
         ArrowBox[BezierCurveBox[{{0., 0.}, {
-         0.08859810272638918, -0.24184866861241677`}, {-0.03479513243827623, \
--0.4629230610748044}, {-0.19598645180024787`, -0.5219977245328549}, \
-{-0.5219977245328549, -0.19598645180024796`}, {-0.46292306107480435`, \
--0.034795132438276255`}, {-0.24184866861241677`, 0.08859810272638916}, {0., 
-         0.}},
-         SplineDegree->7], 0.02261146496815286], 
-        ArrowBox[BezierCurveBox[{{1., 0.}, {
-         1.2336611528348702`, -0.10836451435868591`}, {
-         1.3027321615542393`, -0.3519399097530176}, {
-         1.2305247816924834`, -0.5076914798697748}, {
-         0.7694752183075166, -0.5076914798697749}, {
-         0.6972678384457607, -0.3519399097530176}, {
-         0.7663388471651298, -0.10836451435868591`}, {1., 0.}},
+         0.21330247370053435`, -0.09892281491224131}, {
+         0.2763553896092585, -0.32127571243010034`}, {
+         0.21043937166154517`, -0.4634567929630928}, {-0.21043937166154508`, \
+-0.46345679296309283`}, {-0.2763553896092585, -0.32127571243010034`}, \
+{-0.2133024737005343, -0.09892281491224131}, {0., 0.}},
          SplineDegree->7], 0.02261146496815286]}, 
        {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
         0.7]}], {DiskBox[{0., 2.}, 0.02261146496815286], 
          InsetBox["1", Offset[{0, 2}, {0., 2.022611464968153}], ImageScaled[{0.5, 0}],
           BaseStyle->"Graphics"], InsetBox[
           RowBox[{
-           FractionBox[
-            RowBox[{
-             SuperscriptBox["\[Gamma]", "3"], "+", 
-             RowBox[{"8", " ", "\[Gamma]"}]}], 
-            RowBox[{"12", "-", 
-             RowBox[{"12", " ", "\[Gamma]"}]}]], "+", 
+           RowBox[{"(", 
+            TagBox[GridBox[{
+               {"\[Piecewise]", GridBox[{
+                  {
+                   RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"16", " ", 
+                    SuperscriptBox["\[Gamma]", "3"]}], "+", 
+                    RowBox[{"17", " ", 
+                    SuperscriptBox["\[Gamma]", "2"]}], "+", 
+                    RowBox[{"8", " ", "\[Gamma]"}], "-", "1"}], 
+                    RowBox[{"60", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"\[Gamma]", "-", "1"}], ")"}], " ", 
+                    "\[Gamma]"}]]}], 
+                   RowBox[{
+                    RowBox[{"2", " ", "\[Gamma]"}], "\[GreaterEqual]", 
+                    "1"}]},
+                  {
+                   FractionBox[
+                    RowBox[{"\[Gamma]", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"16", " ", 
+                    SuperscriptBox["\[Gamma]", "3"]}], "-", 
+                    RowBox[{"65", " ", 
+                    SuperscriptBox["\[Gamma]", "2"]}], "+", 
+                    RowBox[{"90", " ", "\[Gamma]"}], "-", "40"}], ")"}]}], 
+                    RowBox[{"60", " ", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"\[Gamma]", "-", "1"}], ")"}], "3"]}]], 
+                   TagBox["True",
+                    "PiecewiseDefault",
+                    AutoDelete->True]}
+                 },
+                 AllowedDimensions->{2, Automatic},
+                 Editable->True,
+                 
+                 GridBoxAlignment->{
+                  "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+                 
+                 GridBoxItemSize->{
+                  "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.84]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.4]}, 
+                    Offset[0.2]}},
+                 Selectable->True]}
+              },
+              
+              GridBoxAlignment->{
+               "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+              GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+              
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.35]}, 
+                  Offset[0.27999999999999997`]}, "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}}],
+             "Piecewise",
+             DeleteWithContents->True,
+             Editable->False,
+             SelectWithContents->True,
+             Selectable->False,
+             StripWrapperBoxes->True], ")"}], "+", 
            FractionBox["1", "2"]}], Offset[{0, -2}, {0., 1.9773885350318472}],
            ImageScaled[{0.5, 1}],
           BaseStyle->"Graphics"]}, DiskBox[{0., 1.}, 0.02261146496815286], 
-        DiskBox[{1., 1.}, 0.02261146496815286], 
-        DiskBox[{0., 0.}, 0.02261146496815286], 
-        DiskBox[{1., 0.}, 0.02261146496815286]}}],
+        DiskBox[{-1., 1.}, 0.02261146496815286], 
+        DiskBox[{-1., 0.}, 0.02261146496815286], 
+        DiskBox[{0., 0.}, 0.02261146496815286]}}],
      MouseAppearanceTag["NetworkGraphics"]],
     AllowKernelInitialization->False]],
   DefaultBaseStyle->{
@@ -387,490 +905,10 @@ Cell[BoxData[
  CellChangeTimes->{{3.78005927757868*^9, 3.780059285597535*^9}, {
    3.780059375941909*^9, 3.780059394281719*^9}, 3.780059486792571*^9, {
    3.78006049993163*^9, 3.7800605272061043`*^9}, {3.780060572537266*^9, 
-   3.780060589120324*^9}},
- CellLabel->
-  "Out[183]=",ExpressionUUID->"57c3f2f2-6cff-4b13-a10d-31f69c4eecc8"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", 
-  RowBox[{
-   GraphicsBox[
-    NamespaceBox["NetworkGraphics",
-     DynamicModuleBox[{Typeset`graph = HoldComplete[
-       Graph[{1, 2, 3}, {{{1, 2}, {2, 2}, {1, 3}, {3, 3}}, Null}, {
-        VertexLabels -> {
-          1 -> Placed[{
-             1, Rational[1, 2] + 
-              2 (3 - 3 $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma]}, {
-             Above, Below}]}}]]}, 
-      TagBox[GraphicsGroupBox[{
-         {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
-          ArrowBox[{{0., 1.}, {0., 0.}}, 0.01273], 
-          ArrowBox[{{0., 1.}, {1., 0.}}, 0.01273], 
-          ArrowBox[BezierCurveBox[{{0., 0.}, {
-           0.23366115283487018`, -0.10836451435868591`}, {
-           0.3027321615542393, -0.3519399097530176}, {
-           0.2305247816924834, -0.5076914798697748}, {-0.2305247816924833, \
--0.5076914798697749}, {-0.3027321615542393, -0.3519399097530176}, \
-{-0.23366115283487013`, -0.10836451435868591`}, {0., 0.}},
-           SplineDegree->7], 0.01273], 
-          ArrowBox[BezierCurveBox[{{1., 0.}, {1.2418486686124166`, 
-           0.08859810272638968}, {
-           1.4629230610748043`, -0.03479513243827523}, {
-           1.5219977245328553`, -0.19598645180024682`}, {
-           1.195986451800249, -0.5219977245328544}, {
-           1.0347951324382771`, -0.46292306107480424`}, {
-           0.9114018972736113, -0.2418486686124172}, {1., 0.}},
-           SplineDegree->7], 0.01273]}, 
-         {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
-          0.7]}], {DiskBox[{0., 1.}, 0.01273], 
-           InsetBox["1", Offset[{0, 2}, {0., 1.01273}], ImageScaled[{0.5, 0}],
-            
-            BaseStyle->"Graphics"], InsetBox[
-            RowBox[{
-             FractionBox[
-              RowBox[{"2", " ", "\[Gamma]"}], 
-              RowBox[{"3", "-", 
-               RowBox[{"3", " ", "\[Gamma]"}]}]], "+", 
-             FractionBox["1", "2"]}], Offset[{0, -2}, {0., 0.98727}], 
-            ImageScaled[{0.5, 1}],
-            BaseStyle->"Graphics"]}, DiskBox[{0., 0.}, 0.01273], 
-          DiskBox[{1., 0.}, 0.01273]}}],
-       MouseAppearanceTag["NetworkGraphics"]],
-      AllowKernelInitialization->False]],
-    DefaultBaseStyle->{
-     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
-    
-    FormatType->TraditionalForm,
-    FrameTicks->None,
-    ImageSize->{298., Automatic}], "\[IndentingNewLine]", 
-   GraphicsBox[
-    NamespaceBox["NetworkGraphics",
-     DynamicModuleBox[{Typeset`graph = HoldComplete[
-       Graph[{1, 2, 3, 4}, {{{1, 2}, {2, 2}, {1, 3}, {3, 4}, {4, 3}}, Null}, {
-        VertexLabels -> {
-          1 -> Placed[{
-             1, Rational[1, 2] + 
-              Rational[-1, 
-                 12] (-1 + $CellContext`\[Gamma])^(-1) $CellContext`\[Gamma] (
-                 1 + $CellContext`\[Gamma])^(-2) (8 + 
-                15 $CellContext`\[Gamma] + 8 $CellContext`\[Gamma]^2)}, {
-             Above, Below}]}}]]}, 
-      TagBox[GraphicsGroupBox[{
-         {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
-          ArrowBox[{{2.048559801975602, 0.}, {3.0218263894678974`, 
-           1.5504966598200019`*^-12}}, 0.03039583993889068], 
-          ArrowBox[{{2.048559801975602, 0.}, {0.9744126617836261, 
-           4.639184666957519*^-13}}, 0.03039583993889068], 
-          ArrowBox[BezierCurveBox[{{3.0218263894678974`, 
-           1.5504966598200019`*^-12}, {3.110305644935354, 
-           0.19078353238699391`}, {3.3091841224728546`, 0.2471797748479051}, {
-           3.436354746947406, 0.18822269607323458`}, {
-           3.4363547469480062`, -0.18822269606881165`}, {
-           3.309184122473643, -0.2471797748438877}, {
-           3.1103056449359623`, -0.19078353238361087`}, {3.0218263894678974`, 
-           1.5504966598200019`*^-12}},
-           SplineDegree->7], 0.03039583993889068], 
-          ArrowBox[BezierCurveBox[{{0.9744126617836261, 
-           4.639184666957519*^-13}, {
-           0.4872063308916646, -0.1602331461674644}, {0., 
-           1.3852616875027948`*^-12}}], 0.03039583993889068], 
-          ArrowBox[BezierCurveBox[{{0., 1.3852616875027948`*^-12}, {
-           0.48720633089196197`, 0.16023314616931325`}, {0.9744126617836261, 
-           4.639184666957519*^-13}}], 0.03039583993889068]}, 
-         {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
-          0.7]}], {DiskBox[{2.048559801975602, 0.}, 0.03039583993889068], 
-           InsetBox["1", 
-            Offset[{0, 2}, {2.048559801975602, 0.03039583993889068}], 
-            ImageScaled[{0.5, 0}],
-            BaseStyle->"Graphics"], InsetBox[
-            RowBox[{
-             FractionBox["1", "2"], "-", 
-             FractionBox[
-              RowBox[{"\[Gamma]", " ", 
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"8", " ", 
-                  SuperscriptBox["\[Gamma]", "2"]}], "+", 
-                 RowBox[{"15", " ", "\[Gamma]"}], "+", "8"}], ")"}]}], 
-              RowBox[{"12", " ", 
-               RowBox[{"(", 
-                RowBox[{"\[Gamma]", "-", "1"}], ")"}], " ", 
-               SuperscriptBox[
-                RowBox[{"(", 
-                 RowBox[{"\[Gamma]", "+", "1"}], ")"}], "2"]}]]}], 
-            Offset[{0, -2}, {2.048559801975602, -0.03039583993889068}], 
-            ImageScaled[{0.5, 1}],
-            BaseStyle->"Graphics"]}, 
-          DiskBox[{3.0218263894678974, 1.5504966598200019*^-12}, 
-           0.03039583993889068], 
-          DiskBox[{0.9744126617836261, 4.639184666957519*^-13}, 
-           0.03039583993889068], 
-          DiskBox[{0., 1.3852616875027948*^-12}, 0.03039583993889068]}}],
-       MouseAppearanceTag["NetworkGraphics"]],
-      AllowKernelInitialization->False]],
-    DefaultBaseStyle->{
-     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
-    
-    FormatType->TraditionalForm,
-    FrameTicks->None,
-    ImageSize->{Automatic, 78.928396988956}], "\[IndentingNewLine]", 
-   GraphicsBox[
-    NamespaceBox["NetworkGraphics",
-     DynamicModuleBox[{Typeset`graph = HoldComplete[
-       Graph[{1, 2, 3, 4, 
-        5}, {{{1, 2}, {2, 2}, {1, 3}, {3, 4}, {4, 5}, {5, 3}}, Null}, {
-        VertexLabels -> {1 -> Placed[{Piecewise[{{
-                  Rational[1, 2], $CellContext`\[Gamma] < 
-                  Rational[1, 2] (-1 + 5^Rational[1, 2])}, {
-                 Rational[
-                   1, 24] $CellContext`\[Gamma]^(-3) (
-                    1 + $CellContext`\[Gamma] + $CellContext`\[Gamma]^2)^(-1) \
-(-1 + 4 $CellContext`\[Gamma] - 2 $CellContext`\[Gamma]^2 + 
-                   4 $CellContext`\[Gamma]^3 + 17 $CellContext`\[Gamma]^4 + 
-                   20 $CellContext`\[Gamma]^5 - 2 $CellContext`\[Gamma]^6 - 
-                   4 $CellContext`\[Gamma]^7 - $CellContext`\[Gamma]^8), \
-$CellContext`\[Gamma] == Rational[1, 2] (-1 + 5^Rational[1, 2])}}, 
-                Rational[1, 2]] + Piecewise[{{
-                  Rational[1, 2], $CellContext`\[Gamma] < 
-                  Rational[1, 2] (-1 + 5^Rational[1, 2])}, {
-                 Rational[
-                   1, 24] $CellContext`\[Gamma]^(-3) (
-                    1 + $CellContext`\[Gamma] + $CellContext`\[Gamma]^2)^(-1) \
-(1 - 4 $CellContext`\[Gamma] + 2 $CellContext`\[Gamma]^2 + 
-                   20 $CellContext`\[Gamma]^3 + 7 $CellContext`\[Gamma]^4 + 
-                   4 $CellContext`\[Gamma]^5 + 2 $CellContext`\[Gamma]^6 + 
-                   4 $CellContext`\[Gamma]^7 + $CellContext`\[Gamma]^8), \
-$CellContext`\[Gamma] == Rational[1, 2] (-1 + 5^Rational[1, 2])}}, 
-                Rational[1, 2]], Rational[1, 2] + 
-              Piecewise[{{
-                 Rational[-1, 12] $CellContext`\[Gamma] (8 + 
-                   7 $CellContext`\[Gamma] + 
-                   8 $CellContext`\[Gamma]^2)/(-1 + $CellContext`\[Gamma]^3), 
-                  1 + 2 $CellContext`\[Gamma] != 5^Rational[1, 2]}}, 
-                Rational[-1, 
-                  120] (-1 + $CellContext`\[Gamma])^(-1) \
-$CellContext`\[Gamma]^(-2) (
-                  1 + $CellContext`\[Gamma] + $CellContext`\[Gamma]^2)^(-2) \
-(-1 + 5 $CellContext`\[Gamma] - 5 $CellContext`\[Gamma]^2 + 
-                 70 $CellContext`\[Gamma]^3 + 165 $CellContext`\[Gamma]^4 + 
-                 241 $CellContext`\[Gamma]^5 + 135 $CellContext`\[Gamma]^6 + 
-                 70 $CellContext`\[Gamma]^7 + 5 $CellContext`\[Gamma]^8 + 
-                 5 $CellContext`\[Gamma]^9 + $CellContext`\[Gamma]^10)]}, {
-             Above, Below}]}}]]}, 
-      TagBox[GraphicsGroupBox[{
-         {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
-          ArrowBox[{{1.0283411871919943`, 0.37867107436723546`}, {0., 
-           0.3789514483385013}}, 0.031206459205863], 
-          ArrowBox[{{1.0283411871919943`, 0.37867107436723546`}, {
-           2.2334074418364556`, 0.37873871858631114`}}, 0.031206459205863], 
-          ArrowBox[BezierCurveBox[{{0., 
-           0.3789514483385013}, {-0.08853126870372927, 
-           0.188192046632449}, {-0.28742511510588703`, 
-           0.13185002985368072`}, {-0.41457966039324323`, 
-           0.19084177910436584`}, {-0.41447702375187256`, 
-           0.5672871572546345}, {-0.28729032954370703`, 
-           0.6262095611710453}, {-0.08842723565457197, 0.5697590972209131}, {
-           0., 0.3789514483385013}},
-           SplineDegree->7], 0.031206459205863], 
-          ArrowBox[{{2.2334074418364556`, 0.37873871858631114`}, {
-           3.1359322117176034`, 0.7577504029197061}}, 0.031206459205863], 
-          ArrowBox[{{3.1359322117176034`, 0.7577504029197061}, {
-           3.1359040531718607`, 0.}}, 0.031206459205863], 
-          ArrowBox[{{3.1359040531718607`, 0.}, {2.2334074418364556`, 
-           0.37873871858631114`}}, 0.031206459205863]}, 
-         {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
-          0.7]}], {
-           DiskBox[{1.0283411871919943, 0.37867107436723546}, 
-            0.031206459205863], InsetBox[
-            RowBox[{
-             RowBox[{"(", 
-              TagBox[GridBox[{
-                 {"\[Piecewise]", GridBox[{
-                    {
-                    FractionBox["1", "2"], 
-                    RowBox[{"\[Gamma]", "<", 
-                    RowBox[{
-                    FractionBox["1", "2"], " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "+", 
-                    SqrtBox["5"]}], ")"}]}]}]},
-                    {
-                    FractionBox[
-                    RowBox[{
-                    RowBox[{"-", 
-                    SuperscriptBox["\[Gamma]", "8"]}], "-", 
-                    RowBox[{"4", " ", 
-                    SuperscriptBox["\[Gamma]", "7"]}], "-", 
-                    RowBox[{"2", " ", 
-                    SuperscriptBox["\[Gamma]", "6"]}], "+", 
-                    RowBox[{"20", " ", 
-                    SuperscriptBox["\[Gamma]", "5"]}], "+", 
-                    RowBox[{"17", " ", 
-                    SuperscriptBox["\[Gamma]", "4"]}], "+", 
-                    RowBox[{"4", " ", 
-                    SuperscriptBox["\[Gamma]", "3"]}], "-", 
-                    RowBox[{"2", " ", 
-                    SuperscriptBox["\[Gamma]", "2"]}], "+", 
-                    RowBox[{"4", " ", "\[Gamma]"}], "-", "1"}], 
-                    RowBox[{"24", " ", 
-                    SuperscriptBox["\[Gamma]", "3"], " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    SuperscriptBox["\[Gamma]", "2"], "+", "\[Gamma]", "+", 
-                    "1"}], ")"}]}]], 
-                    RowBox[{"\[Gamma]", "\[LongEqual]", 
-                    RowBox[{
-                    FractionBox["1", "2"], " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "+", 
-                    SqrtBox["5"]}], ")"}]}]}]},
-                    {
-                    FractionBox["1", "2"], 
-                    TagBox["True",
-                    "PiecewiseDefault",
-                    AutoDelete->True]}
-                   },
-                   AllowedDimensions->{2, Automatic},
-                   Editable->True,
-                   
-                   GridBoxAlignment->{
-                    "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-                   
-                   GridBoxItemSize->{
-                    "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
-                   GridBoxSpacings->{"Columns" -> {
-                    Offset[0.27999999999999997`], {
-                    Offset[0.84]}, 
-                    Offset[0.27999999999999997`]}, "Rows" -> {
-                    Offset[0.2], {
-                    Offset[0.4]}, 
-                    Offset[0.2]}},
-                   Selectable->True]}
-                },
-                
-                GridBoxAlignment->{
-                 "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-                
-                GridBoxItemSize->{
-                 "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
-                GridBoxSpacings->{"Columns" -> {
-                    Offset[0.27999999999999997`], {
-                    Offset[0.35]}, 
-                    Offset[0.27999999999999997`]}, "Rows" -> {
-                    Offset[0.2], {
-                    Offset[0.4]}, 
-                    Offset[0.2]}}],
-               "Piecewise",
-               DeleteWithContents->True,
-               Editable->False,
-               SelectWithContents->True,
-               Selectable->False,
-               StripWrapperBoxes->True], ")"}], "+", 
-             RowBox[{"(", 
-              TagBox[GridBox[{
-                 {"\[Piecewise]", GridBox[{
-                    {
-                    FractionBox["1", "2"], 
-                    RowBox[{"\[Gamma]", "<", 
-                    RowBox[{
-                    FractionBox["1", "2"], " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "+", 
-                    SqrtBox["5"]}], ")"}]}]}]},
-                    {
-                    FractionBox[
-                    RowBox[{
-                    SuperscriptBox["\[Gamma]", "8"], "+", 
-                    RowBox[{"4", " ", 
-                    SuperscriptBox["\[Gamma]", "7"]}], "+", 
-                    RowBox[{"2", " ", 
-                    SuperscriptBox["\[Gamma]", "6"]}], "+", 
-                    RowBox[{"4", " ", 
-                    SuperscriptBox["\[Gamma]", "5"]}], "+", 
-                    RowBox[{"7", " ", 
-                    SuperscriptBox["\[Gamma]", "4"]}], "+", 
-                    RowBox[{"20", " ", 
-                    SuperscriptBox["\[Gamma]", "3"]}], "+", 
-                    RowBox[{"2", " ", 
-                    SuperscriptBox["\[Gamma]", "2"]}], "-", 
-                    RowBox[{"4", " ", "\[Gamma]"}], "+", "1"}], 
-                    RowBox[{"24", " ", 
-                    SuperscriptBox["\[Gamma]", "3"], " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    SuperscriptBox["\[Gamma]", "2"], "+", "\[Gamma]", "+", 
-                    "1"}], ")"}]}]], 
-                    RowBox[{"\[Gamma]", "\[LongEqual]", 
-                    RowBox[{
-                    FractionBox["1", "2"], " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], "+", 
-                    SqrtBox["5"]}], ")"}]}]}]},
-                    {
-                    FractionBox["1", "2"], 
-                    TagBox["True",
-                    "PiecewiseDefault",
-                    AutoDelete->True]}
-                   },
-                   AllowedDimensions->{2, Automatic},
-                   Editable->True,
-                   
-                   GridBoxAlignment->{
-                    "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-                   
-                   GridBoxItemSize->{
-                    "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
-                   GridBoxSpacings->{"Columns" -> {
-                    Offset[0.27999999999999997`], {
-                    Offset[0.84]}, 
-                    Offset[0.27999999999999997`]}, "Rows" -> {
-                    Offset[0.2], {
-                    Offset[0.4]}, 
-                    Offset[0.2]}},
-                   Selectable->True]}
-                },
-                
-                GridBoxAlignment->{
-                 "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-                
-                GridBoxItemSize->{
-                 "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
-                GridBoxSpacings->{"Columns" -> {
-                    Offset[0.27999999999999997`], {
-                    Offset[0.35]}, 
-                    Offset[0.27999999999999997`]}, "Rows" -> {
-                    Offset[0.2], {
-                    Offset[0.4]}, 
-                    Offset[0.2]}}],
-               "Piecewise",
-               DeleteWithContents->True,
-               Editable->False,
-               SelectWithContents->True,
-               Selectable->False,
-               StripWrapperBoxes->True], ")"}]}], 
-            Offset[{0, 2}, {1.0283411871919943, 0.4098775335730985}], 
-            ImageScaled[{0.5, 0}],
-            BaseStyle->"Graphics"], InsetBox[
-            RowBox[{
-             RowBox[{"(", 
-              TagBox[GridBox[{
-                 {"\[Piecewise]", GridBox[{
-                    {
-                    RowBox[{"-", 
-                    FractionBox[
-                    RowBox[{"\[Gamma]", " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"8", " ", 
-                    SuperscriptBox["\[Gamma]", "2"]}], "+", 
-                    RowBox[{"7", " ", "\[Gamma]"}], "+", "8"}], ")"}]}], 
-                    RowBox[{"12", " ", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    SuperscriptBox["\[Gamma]", "3"], "-", "1"}], ")"}]}]]}], 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"2", " ", "\[Gamma]"}], "+", "1"}], "\[NotEqual]", 
-                    SqrtBox["5"]}]},
-                    {
-                    RowBox[{"-", 
-                    FractionBox[
-                    RowBox[{
-                    SuperscriptBox["\[Gamma]", "10"], "+", 
-                    RowBox[{"5", " ", 
-                    SuperscriptBox["\[Gamma]", "9"]}], "+", 
-                    RowBox[{"5", " ", 
-                    SuperscriptBox["\[Gamma]", "8"]}], "+", 
-                    RowBox[{"70", " ", 
-                    SuperscriptBox["\[Gamma]", "7"]}], "+", 
-                    RowBox[{"135", " ", 
-                    SuperscriptBox["\[Gamma]", "6"]}], "+", 
-                    RowBox[{"241", " ", 
-                    SuperscriptBox["\[Gamma]", "5"]}], "+", 
-                    RowBox[{"165", " ", 
-                    SuperscriptBox["\[Gamma]", "4"]}], "+", 
-                    RowBox[{"70", " ", 
-                    SuperscriptBox["\[Gamma]", "3"]}], "-", 
-                    RowBox[{"5", " ", 
-                    SuperscriptBox["\[Gamma]", "2"]}], "+", 
-                    RowBox[{"5", " ", "\[Gamma]"}], "-", "1"}], 
-                    RowBox[{"120", " ", 
-                    RowBox[{"(", 
-                    RowBox[{"\[Gamma]", "-", "1"}], ")"}], " ", 
-                    SuperscriptBox["\[Gamma]", "2"], " ", 
-                    SuperscriptBox[
-                    RowBox[{"(", 
-                    RowBox[{
-                    SuperscriptBox["\[Gamma]", "2"], "+", "\[Gamma]", "+", 
-                    "1"}], ")"}], "2"]}]]}], 
-                    TagBox["True",
-                    "PiecewiseDefault",
-                    AutoDelete->True]}
-                   },
-                   AllowedDimensions->{2, Automatic},
-                   Editable->True,
-                   
-                   GridBoxAlignment->{
-                    "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-                   
-                   GridBoxItemSize->{
-                    "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
-                   GridBoxSpacings->{"Columns" -> {
-                    Offset[0.27999999999999997`], {
-                    Offset[0.84]}, 
-                    Offset[0.27999999999999997`]}, "Rows" -> {
-                    Offset[0.2], {
-                    Offset[0.4]}, 
-                    Offset[0.2]}},
-                   Selectable->True]}
-                },
-                
-                GridBoxAlignment->{
-                 "Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-                
-                GridBoxItemSize->{
-                 "Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
-                GridBoxSpacings->{"Columns" -> {
-                    Offset[0.27999999999999997`], {
-                    Offset[0.35]}, 
-                    Offset[0.27999999999999997`]}, "Rows" -> {
-                    Offset[0.2], {
-                    Offset[0.4]}, 
-                    Offset[0.2]}}],
-               "Piecewise",
-               DeleteWithContents->True,
-               Editable->False,
-               SelectWithContents->True,
-               Selectable->False,
-               StripWrapperBoxes->True], ")"}], "+", 
-             FractionBox["1", "2"]}], 
-            Offset[{0, -2}, {1.0283411871919943, 0.34746461516137245}], 
-            ImageScaled[{0.5, 1}],
-            BaseStyle->"Graphics"]}, 
-          DiskBox[{0., 0.3789514483385013}, 0.031206459205863], 
-          DiskBox[{2.2334074418364556, 0.37873871858631114}, 
-           0.031206459205863], 
-          DiskBox[{3.1359322117176034, 0.7577504029197061}, 
-           0.031206459205863], 
-          DiskBox[{3.1359040531718607, 0.}, 0.031206459205863]}}],
-       MouseAppearanceTag["NetworkGraphics"]],
-      AllowKernelInitialization->False]],
-    DefaultBaseStyle->{
-     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
-    
-    FormatType->TraditionalForm,
-    FrameTicks->None,
-    ImageSize->{856.6284233729473, Automatic}]}]}]], "Input",
- CellChangeTimes->{{3.779991374414256*^9, 3.779991421674971*^9}, {
-  3.780054920633279*^9, 
-  3.780054928973607*^9}},ExpressionUUID->"6975bbc9-b5a5-4d58-9c9f-\
-5006d69e1b79"]
+   3.780060589120324*^9}, 3.7800607643646297`*^9, 3.781104183261257*^9, {
+   3.781104233024375*^9, 3.781104249039295*^9}, 3.781104294204071*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"4ab18306-1a4b-4fe2-ac6d-dd7562bc0388"]
+}, Open  ]]
 },
 WindowSize->{960, 1016},
 WindowMargins->{{Automatic, 0}, {0, Automatic}},
@@ -889,14 +927,26 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 11493, 239, 1389, "Input",ExpressionUUID->"25028ae1-0aca-4182-8481-a69a6ed08f15"],
+Cell[580, 22, 12141, 253, 1435, "Input",ExpressionUUID->"25028ae1-0aca-4182-8481-a69a6ed08f15"],
 Cell[CellGroupData[{
-Cell[12098, 265, 1234, 32, 48, "Print",ExpressionUUID->"d70e7249-9406-4719-b01e-b6515d407603"],
-Cell[13335, 299, 736, 21, 42, "Print",ExpressionUUID->"031c2884-9edf-422c-a2d5-ec1221a6a6a2"]
+Cell[12746, 279, 366, 7, 25, "Print",ExpressionUUID->"8c9bf719-9cd1-4a92-9dbf-27831e96dd82"],
+Cell[13115, 288, 3056, 61, 440, "Print",ExpressionUUID->"b28cff9b-9fba-429b-a220-f81027d76c85"],
+Cell[16174, 351, 2216, 54, 91, "Print",ExpressionUUID->"830e83f3-9b73-40ee-affe-b4ddb3333dd4"],
+Cell[18393, 407, 445, 8, 25, "Print",ExpressionUUID->"54d2e504-3c2f-4714-be84-8b715239910c"],
+Cell[18841, 417, 1426, 38, 48, "Print",ExpressionUUID->"7f781b38-f0e9-40a0-814c-a40cd07b8b60"],
+Cell[20270, 457, 429, 8, 25, "Print",ExpressionUUID->"06461a6f-22f2-49c1-8f8d-6ae6daa61c7d"],
+Cell[20702, 467, 504, 11, 25, "Print",ExpressionUUID->"65415874-1ffd-4a91-8f8c-1d8cfebc80e0"],
+Cell[21209, 480, 1125, 30, 25, "Print",ExpressionUUID->"9c833ef9-e4c4-411e-b18c-161244342fad"],
+Cell[22337, 512, 3277, 87, 77, "Print",ExpressionUUID->"63b787ae-878f-44a8-b10d-c54ce427304e"],
+Cell[25617, 601, 511, 13, 42, "Print",ExpressionUUID->"54b31125-e582-417c-abcf-1ef47a45a915"],
+Cell[26131, 616, 431, 8, 25, "Print",ExpressionUUID->"11b91333-b20c-44dd-8059-afc66c88573e"],
+Cell[26565, 626, 502, 11, 25, "Print",ExpressionUUID->"7e618b2d-844b-4298-8f13-1001ba5b3d4c"],
+Cell[27070, 639, 1125, 30, 25, "Print",ExpressionUUID->"9544ca77-5fa8-4513-945e-3fe52ab587f0"],
+Cell[28198, 671, 3277, 87, 77, "Print",ExpressionUUID->"c16b0466-64f9-4f93-a4d1-e5578137330c"],
+Cell[31478, 760, 511, 13, 42, "Print",ExpressionUUID->"ea4384e8-c9e4-4253-9e59-fb7438152898"]
 }, Open  ]],
-Cell[14086, 323, 3453, 68, 449, "Output",ExpressionUUID->"57c3f2f2-6cff-4b13-a10d-31f69c4eecc8"]
-}, Open  ]],
-Cell[17554, 394, 22030, 478, 672, "Input",ExpressionUUID->"6975bbc9-b5a5-4d58-9c9f-5006d69e1b79"]
+Cell[32004, 776, 6208, 133, 482, "Output",ExpressionUUID->"4ab18306-1a4b-4fe2-ac6d-dd7562bc0388"]
+}, Open  ]]
 }
 ]
 *)
