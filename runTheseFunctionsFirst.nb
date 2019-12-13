@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     45625,        919]
-NotebookOptionsPosition[     45242,        905]
-NotebookOutlinePosition[     45575,        920]
-CellTagsIndexPosition[     45532,        917]
+NotebookDataLength[     51653,       1033]
+NotebookOptionsPosition[     51269,       1019]
+NotebookOutlinePosition[     51602,       1034]
+CellTagsIndexPosition[     51559,       1031]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -509,20 +509,15 @@ Cell[BoxData[{
               " ", "current", " ", "state", " ", "from", " ", "beginning", 
               " ", "of", " ", "every", " ", "state", " ", "we", " ", "care", 
               " ", "about"}], "*)"}], "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{
+             "For", " ", "loop", " ", "to", " ", "elimate", " ", "dominated", 
+              " ", 
+              RowBox[{"policies", "."}]}], "*)"}], "\[IndentingNewLine]", 
             RowBox[{
-             RowBox[{"preparedInequalityList", " ", "=", " ", 
-              RowBox[{"Simplify", "[", 
-               RowBox[{"equationList", " ", "-", 
-                RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";", 
-             "\[IndentingNewLine]", 
-             RowBox[{"finalPower", " ", "=", " ", "0"}], ";", 
-             "\[IndentingNewLine]", 
-             RowBox[{"finalMeasure", " ", "=", " ", 
+             RowBox[{"nonDominatedEquationList", " ", "=", " ", 
               RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-             RowBox[{"(*", 
-              RowBox[{
-              "Begin", " ", "for", " ", "loop", " ", "for", " ", "power", " ",
-                "of", " ", "state"}], "*)"}], "\[IndentingNewLine]", 
              RowBox[{"For", "[", 
               RowBox[{
                RowBox[{"currentReward", "=", "1"}], ",", " ", 
@@ -536,6 +531,102 @@ Cell[BoxData[{
                  RowBox[{"frequencyToInequality", "[", 
                   RowBox[{"equationList", ",", " ", "currentReward"}], 
                   "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{"Returns", " ", "inequality", " ", "list"}], "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{
+                  "If", " ", "no", " ", "inequalities", " ", "exist", 
+                   RowBox[{"(", 
+                    RowBox[{"measure", " ", "0", " ", "globally"}], ")"}]}], 
+                  ",", " ", 
+                  RowBox[{
+                  "then", " ", "skip", " ", "to", " ", "next", " ", 
+                   "loop"}]}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"ineq", " ", "===", " ", "False"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], 
+                    ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Dominated Frequency: \>\"", ",", " ", 
+                    RowBox[{"equationList", "[", 
+                    RowBox[{"[", "currentReward", "]"}], "]"}]}], "]"}], 
+                    ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Continue", "[", "]"}], ";"}], 
+                  "\[IndentingNewLine]", ",", 
+                  RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"AppendTo", "[", 
+                    RowBox[{"nonDominatedEquationList", ",", " ", 
+                    RowBox[{"equationList", "[", 
+                    RowBox[{"[", "currentReward", "]"}], "]"}]}], "]"}], 
+                   ";"}]}], "\[IndentingNewLine]", 
+                 RowBox[{"(*", 
+                  RowBox[{"TODO", ",", " ", 
+                   RowBox[{
+                   "do", " ", "this", " ", "same", " ", "for", " ", "loop"}], 
+                   ",", " ", 
+                   RowBox[{
+                   "but", " ", "eliminate", " ", "all", " ", "False"}], ",", 
+                   " ", 
+                   RowBox[{"0", "-", 
+                    RowBox[{
+                    RowBox[{"measure", ".", " ", "Then"}], " ", "do", " ", 
+                    "another", " ", "for", " ", "loop", " ", "after", " ", 
+                    "this", " ", "false", " ", "detection", " ", "if", " ", 
+                    RowBox[{"statement", "."}]}]}]}], "*)"}], 
+                 "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]",
+               "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"debugLevel", " ", "\[Equal]", " ", "\"\<Basic\>\""}], 
+               ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Print", "[", 
+                 RowBox[{
+                 "\"\<Non-Dominated Equation List: \>\"", ",", " ", 
+                  "nonDominatedEquationList"}], "]"}], ";"}], 
+               "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", "]"}], 
+             ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"preparedInequalityList", " ", "=", " ", 
+              RowBox[{"Simplify", "[", 
+               RowBox[{"nonDominatedEquationList", " ", "-", 
+                RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"finalPower", " ", "=", " ", "0"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"finalMeasure", " ", "=", " ", 
+              RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"numberOfNonDominatedFrequencies", " ", "=", " ", 
+              RowBox[{"Length", "[", "nonDominatedEquationList", "]"}]}], ";",
+              "\[IndentingNewLine]", 
+             RowBox[{"(*", 
+              RowBox[{
+              "Begin", " ", "for", " ", "loop", " ", "for", " ", "power", " ",
+                "of", " ", "state"}], "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"For", "[", 
+              RowBox[{
+               RowBox[{"currentReward", "=", "1"}], ",", " ", 
+               RowBox[{
+               "currentReward", "\[LessEqual]", 
+                "numberOfNonDominatedFrequencies"}], ",", " ", 
+               RowBox[{"currentReward", "++"}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"ineq", " ", "=", " ", 
+                 RowBox[{"frequencyToInequality", "[", 
+                  RowBox[{
+                  "nonDominatedEquationList", ",", " ", "currentReward"}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
                 RowBox[{"(*", 
                  RowBox[{"Returns", " ", "inequality", " ", "list"}], "*)"}], 
                 "\[IndentingNewLine]", 
@@ -557,24 +648,6 @@ Cell[BoxData[{
                     RowBox[{"\"\<Inequalities used: \>\"", ",", " ", "ineq"}],
                      "]"}], ";"}], "\[IndentingNewLine]", ","}], 
                  "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-                RowBox[{"(*", 
-                 RowBox[{
-                  RowBox[{
-                  "If", " ", "no", " ", "inequalities", " ", "exist", 
-                   RowBox[{"(", 
-                    RowBox[{"measure", " ", "0", " ", "globally"}], ")"}]}], 
-                  ",", " ", 
-                  RowBox[{
-                  "then", " ", "skip", " ", "to", " ", "next", " ", 
-                   "loop"}]}], "*)"}], "\[IndentingNewLine]", 
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{"ineq", " ", "===", " ", "False"}], ",", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{
-                   RowBox[{"Continue", "[", "]"}], ";"}]}], 
-                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-                "\[IndentingNewLine]", 
                 RowBox[{"(*", 
                  RowBox[{
                  "Find", " ", "Region", " ", "of", " ", "integration"}], 
@@ -608,7 +681,7 @@ Cell[BoxData[{
                     RowBox[{
                     RowBox[{"1", ">", "\[Gamma]", ">", "0"}], "&&", 
                     RowBox[{"First", "@", "region"}]}], ",", 
-                    "hyperCubeVariables"}], "]"}], "/.", 
+                    "hyperCubeVariables", ",", " ", "Reals"}], "]"}], "/.", 
                   RowBox[{"_Equal", "\[Rule]", "False"}]}]}], ";", " ", 
                 "\[IndentingNewLine]", 
                 RowBox[{"test", " ", "=", " ", 
@@ -621,7 +694,7 @@ Cell[BoxData[{
                   RowBox[{"test", ",", " ", 
                    RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
                   "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-                "\[IndentingNewLine]", 
+                
                 RowBox[{"interm2", " ", "=", " ", 
                  RowBox[{"Integrate", "[", 
                   RowBox[{"1", ",", 
@@ -634,6 +707,35 @@ Cell[BoxData[{
                     RowBox[{"[", "currentReward", "]"}], "]"}], ",", 
                    RowBox[{"hyperCubeVariables", "\[Element]", "region"}]}], 
                   "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "Removing", " ", "Piecewise", " ", "Component", " ", 
+                  "because", " ", "it", " ", "will", " ", "always", " ", "be",
+                   " ", "equivalent"}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Head", "@", "interm"}], " ", "\[Equal]", " ", 
+                   "Piecewise"}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"interm", " ", "=", " ", 
+                    RowBox[{"interm", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}], 
+                   ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Head", "@", "interm2"}], " ", "\[Equal]", " ", 
+                   "Piecewise"}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"interm2", " ", "=", " ", 
+                    RowBox[{"interm2", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}], 
+                   ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
                 RowBox[{"AppendTo", "[", 
                  RowBox[{"finalMeasure", " ", ",", "  ", 
                   RowBox[{"Simplify", "[", "interm2", "]"}]}], "]"}], ";", 
@@ -896,15 +998,27 @@ Cell[BoxData[{
    3.78464341931321*^9, 3.784643431700968*^9}, {3.784643634797244*^9, 
    3.784643639257195*^9}, {3.784643705421924*^9, 3.784643766126745*^9}, {
    3.784643822169676*^9, 3.7846438819402647`*^9}, {3.784644383684045*^9, 
-   3.784644384031864*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
-7e584a49f672"],
+   3.784644384031864*^9}, {3.785191983741194*^9, 3.785192070910686*^9}, {
+   3.785192145940271*^9, 3.785192488533875*^9}, {3.785192774442964*^9, 
+   3.7851928252674427`*^9}, {3.785192967221086*^9, 3.785192976262225*^9}, {
+   3.78519329288197*^9, 3.785193312331846*^9}, {3.7851933577611237`*^9, 
+   3.785193390711615*^9}, 3.7851936089260283`*^9, {3.785193664058861*^9, 
+   3.785193671455018*^9}, {3.785193797486079*^9, 3.7851938051871767`*^9}, {
+   3.7851939433392057`*^9, 3.7851940259069757`*^9}, {3.785194696339229*^9, 
+   3.78519471778564*^9}, {3.785194812394224*^9, 3.7851948665647497`*^9}, {
+   3.785194897781308*^9, 3.785194906284522*^9}, {3.785195027747079*^9, 
+   3.785195032858193*^9}, {3.78519514957286*^9, 3.7851951507541647`*^9}, {
+   3.785196086649005*^9, 3.7851961410017633`*^9}, {3.785196201830649*^9, 
+   3.785196202651692*^9}, {3.785196274957694*^9, 3.7851963114138203`*^9}},
+ CellLabel->
+  "In[959]:=",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
  CellChangeTimes->{3.77740335219701*^9},
  CellLabel->"In[13]:=",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 },
 WindowSize->{960, 1016},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
 FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -919,8 +1033,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 44512, 879, 4885, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
-Cell[45073, 901, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+Cell[558, 20, 50539, 993, 5562, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[51100, 1015, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 }
 ]
 *)
