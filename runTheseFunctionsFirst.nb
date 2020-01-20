@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     51653,       1033]
-NotebookOptionsPosition[     51269,       1019]
-NotebookOutlinePosition[     51602,       1034]
-CellTagsIndexPosition[     51559,       1031]
+NotebookDataLength[     52439,       1047]
+NotebookOptionsPosition[     52054,       1033]
+NotebookOutlinePosition[     52387,       1048]
+CellTagsIndexPosition[     52344,       1045]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -474,13 +474,24 @@ Cell[BoxData[{
            RowBox[{
             RowBox[{"numberOfFrequencies", "\[Equal]", "1"}], ",", 
             "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{"TODO", ",", " ", "logan", ",", " ", 
+              RowBox[{"this", " ", "is", " ", "just", " ", 
+               RowBox[{"wrong", ".", " ", "region"}], " ", "needs", " ", "to",
+                " ", "be", " ", "in", " ", "regards", " ", "to", " ", "the", 
+               " ", "inequalities"}], ",", " ", 
+              RowBox[{
+               RowBox[{"right", "?", " ", "or"}], " ", "nah", " ", "because", 
+               " ", 
+               RowBox[{"it", "'"}], "s", " ", "just", " ", 
+               RowBox[{"1", "?"}]}]}], "*)"}], "\[IndentingNewLine]", 
             RowBox[{
              RowBox[{"region", "=", 
               RowBox[{"ImplicitRegion", "[", 
                RowBox[{
                 RowBox[{"Evaluate", "[", 
-                 RowBox[{"Flatten", "[", "hyperCubeRegionBounds", "]"}], 
-                 "]"}], ",", " ", 
+                 RowBox[{"Flatten", "[", "hyperCubeRegionBoundsGlobal", "]"}],
+                  "]"}], ",", " ", 
                 RowBox[{"Evaluate", "[", "hyperCubeVariables", "]"}]}], 
                "]"}]}], ";", "\[IndentingNewLine]", 
              RowBox[{"finalPower", " ", "=", " ", 
@@ -512,8 +523,8 @@ Cell[BoxData[{
             "\[IndentingNewLine]", 
             RowBox[{"(*", 
              RowBox[{
-             "For", " ", "loop", " ", "to", " ", "elimate", " ", "dominated", 
-              " ", 
+             "For", " ", "loop", " ", "to", " ", "eliminate", " ", 
+              "dominated", " ", 
               RowBox[{"policies", "."}]}], "*)"}], "\[IndentingNewLine]", 
             RowBox[{
              RowBox[{"nonDominatedEquationList", " ", "=", " ", 
@@ -1009,9 +1020,12 @@ Cell[BoxData[{
    3.785194897781308*^9, 3.785194906284522*^9}, {3.785195027747079*^9, 
    3.785195032858193*^9}, {3.78519514957286*^9, 3.7851951507541647`*^9}, {
    3.785196086649005*^9, 3.7851961410017633`*^9}, {3.785196201830649*^9, 
-   3.785196202651692*^9}, {3.785196274957694*^9, 3.7851963114138203`*^9}},
- CellLabel->
-  "In[959]:=",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+   3.785196202651692*^9}, {3.785196274957694*^9, 3.7851963114138203`*^9}, {
+   3.785266667889372*^9, 3.785266696576754*^9}, 3.788092574717763*^9, 
+   3.78850735196017*^9, {3.788548933824524*^9, 3.788548933900051*^9}, {
+   3.788549139884151*^9, 
+   3.788549140623953*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
+7e584a49f672"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
  CellChangeTimes->{3.77740335219701*^9},
@@ -1033,8 +1047,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 50539, 993, 5562, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
-Cell[51100, 1015, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+Cell[558, 20, 51324, 1007, 5598, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[51885, 1029, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 }
 ]
 *)
