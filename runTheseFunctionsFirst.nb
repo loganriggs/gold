@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     60120,       1185]
-NotebookOptionsPosition[     59735,       1171]
-NotebookOutlinePosition[     60068,       1186]
-CellTagsIndexPosition[     60025,       1183]
+NotebookDataLength[     62676,       1231]
+NotebookOptionsPosition[     62291,       1217]
+NotebookOutlinePosition[     62624,       1232]
+CellTagsIndexPosition[     62581,       1229]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -368,7 +368,7 @@ Cell[BoxData[{
           RowBox[{"\[Gamma]", " ", "=", " ", "gamma"}], ";"}]}], 
         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
        RowBox[{"Clear", "[", "r", "]"}], ";", "\[IndentingNewLine]", 
-       RowBox[{"powerFactor", " ", "=", " ", 
+       RowBox[{"convertToPower", " ", "=", " ", 
         RowBox[{
          RowBox[{"(", 
           RowBox[{"1", "-", "\[Gamma]"}], ")"}], "/", "\[Gamma]"}]}], ";", 
@@ -621,14 +621,21 @@ Cell[BoxData[{
                   "nonDominatedEquationList"}], "]"}], ";"}], 
                "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", "]"}], 
              ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"(*", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"preparedInequalityList", " ", "=", " ", 
+                RowBox[{"Simplify", "[", 
+                 RowBox[{"nonDominatedEquationList", " ", "-", 
+                  RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";"}], 
+              "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
              RowBox[{"preparedInequalityList", " ", "=", " ", 
-              RowBox[{"Simplify", "[", 
-               RowBox[{"nonDominatedEquationList", " ", "-", 
-                RowBox[{"r", "[", "currentState", "]"}]}], "]"}]}], ";", 
-             "\[IndentingNewLine]", 
+              RowBox[{"Simplify", "[", "nonDominatedEquationList", "]"}]}], 
+             ";", "\[IndentingNewLine]", 
              RowBox[{"finalPower", " ", "=", " ", "0"}], ";", 
              "\[IndentingNewLine]", 
              RowBox[{"finalVariance", " ", "=", " ", "0"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"finalVavg", " ", "=", " ", "0"}], ";", 
              "\[IndentingNewLine]", 
              RowBox[{"finalMeasure", " ", "=", " ", 
               RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
@@ -788,23 +795,32 @@ Cell[BoxData[{
                     RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}], 
                    ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
                 "\[IndentingNewLine]", 
-                RowBox[{"variance", " ", "=", " ", 
-                 RowBox[{"varianceInterm", " ", "-", " ", 
-                  RowBox[{
-                   RowBox[{"(", "interm", ")"}], "^", "2"}]}]}], ";", 
+                RowBox[{"variance", " ", "=", " ", "varianceInterm"}], " ", 
+                ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "base", " ", "reward", " ", "changes", " ", "with", " ", 
+                  RowBox[{"distribution", ".", " ", "This"}], " ", "is", " ", 
+                  "true", " ", "for", " ", "the", " ", "uniform", " ", 
+                  "distribution"}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{"Todo", ",", " ", 
+                  RowBox[{"that", " ", 
+                   RowBox[{"didn", "'"}], "t", " ", "work"}], ",", "lol"}], 
+                 "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{"Currently", ",", " ", 
+                  RowBox[{"power", " ", "per", " ", "frequency", " ", 
+                   RowBox[{"doesn", "'"}], "t", " ", "work"}]}], "*)"}], 
                 "\[IndentingNewLine]", 
-                RowBox[{"(*", "Normalize", "*)"}], "\[IndentingNewLine]", 
-                RowBox[{
-                 RowBox[{"variance", " ", "*=", " ", 
-                  RowBox[{
-                   RowBox[{"(", 
-                    RowBox[{"1", "-", "\[Gamma]"}], ")"}], "^", "2"}]}], " ", 
-                 "//", "Simplify"}], ";", "\[IndentingNewLine]", 
-                "\[IndentingNewLine]", 
+                RowBox[{"baseReward", " ", "=", " ", 
+                 RowBox[{"1", "/", "2"}]}], ";", "\[IndentingNewLine]", 
                 RowBox[{"currentPower", " ", "=", " ", 
                  RowBox[{"Simplify", "[", 
-                  RowBox[{"interm", "*", "powerFactor"}], "]"}]}], ";", 
-                "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"interm", "-", "baseReward"}], ")"}], "*", 
+                   "convertToPower"}], "]"}]}], ";", "\[IndentingNewLine]", 
                 RowBox[{"currentMeasure", " ", "=", " ", 
                  RowBox[{"Simplify", "[", "interm2", "]"}]}], ";", 
                 "\[IndentingNewLine]", 
@@ -819,6 +835,8 @@ Cell[BoxData[{
                  RowBox[{"powerOfEachFrequency", ",", " ", "currentPower"}], 
                  "]"}], ";", "\[IndentingNewLine]", 
                 RowBox[{"finalPower", " ", "+=", "currentPower"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"finalVavg", " ", "+=", " ", "interm"}], ";", 
                 "\[IndentingNewLine]", 
                 RowBox[{"finalVariance", " ", "+=", "variance"}], ";", 
                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -845,8 +863,12 @@ Cell[BoxData[{
                     " ", "]"}], ";", "\[IndentingNewLine]", 
                    RowBox[{"Print", "[", 
                     RowBox[{"\"\<Variance: \>\"", ",", " ", 
-                    RowBox[{"Simplify", "[", "variance", "]"}]}], "]"}], ";", 
-                   "\[IndentingNewLine]", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{"variance", "*", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "\[Gamma]"}], ")"}], "^", "2"}]}], 
+                    "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
                    RowBox[{"$Assumptions", " ", "=", " ", 
                     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
                    RowBox[{"\[Gamma]", " ", "=", " ", "1"}], ";", 
@@ -879,6 +901,12 @@ Cell[BoxData[{
                RowBox[{
                "Change", " ", "for", " ", "other", " ", "distributions"}], 
                "*)"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"finalPower", " ", "=", " ", 
+              RowBox[{"Simplify", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"finalVavg", "-", "baseReward"}], ")"}], "*", " ", 
+                "convertToPower"}], "]"}]}], ";", "\[IndentingNewLine]", 
              RowBox[{"AppendTo", "[", 
               RowBox[{"powerOfStates", " ", ",", " ", 
                RowBox[{"Simplify", "[", "finalPower", "]"}]}], "]"}], ";"}]}],
@@ -907,9 +935,19 @@ Cell[BoxData[{
           "Print", "[", 
            "\"\<=================================================\>\"", "]"}],
            ";", "\[IndentingNewLine]", 
+          RowBox[{"varTemp", " ", "=", " ", 
+           RowBox[{"finalVariance", " ", "-", " ", 
+            RowBox[{
+             RowBox[{"(", "finalVavg", ")"}], "^", "2"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"varTemp", " ", "*=", " ", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "-", "\[Gamma]"}], ")"}], "^", "2"}]}], ";", 
+          "\[IndentingNewLine]", 
           RowBox[{"Print", "[", 
            RowBox[{"\"\<Final Variance: \>\"", ",", " ", 
-            RowBox[{"Simplify", "[", "finalVariance", "]"}]}], "]"}], ";"}], 
+            RowBox[{"Simplify", "[", "varTemp", "]"}]}], "]"}], ";"}], 
          "\[IndentingNewLine]", ","}], "\[IndentingNewLine]", "]"}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"If", "[", 
@@ -1161,8 +1199,16 @@ Cell[BoxData[{
    3.796597495210348*^9}, {3.796598221242146*^9, 3.796598226593131*^9}, {
    3.796647609716313*^9, 3.796647623542323*^9}, {3.796647687284132*^9, 
    3.7966476940477858`*^9}, {3.796647799096896*^9, 3.7966478725070744`*^9}, {
-   3.796648097591771*^9, 
-   3.796648109346724*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
+   3.796648097591771*^9, 3.796648109346724*^9}, {3.796649164631715*^9, 
+   3.7966491833003893`*^9}, {3.796649359762251*^9, 3.796649363751536*^9}, {
+   3.79664996207368*^9, 3.796650001235118*^9}, {3.796650100070285*^9, 
+   3.7966502011255283`*^9}, {3.796650286222149*^9, 3.796650287290208*^9}, {
+   3.796650354082205*^9, 3.796650370918332*^9}, {3.796650510482204*^9, 
+   3.796650605452806*^9}, {3.796651604014489*^9, 3.796651642306856*^9}, {
+   3.79665176938127*^9, 3.7966517759130983`*^9}, {3.796654086343445*^9, 
+   3.796654091441411*^9}, {3.796654131579569*^9, 3.796654136747107*^9}, {
+   3.796654205945822*^9, 
+   3.796654277408742*^9}},ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-\
 7e584a49f672"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
@@ -1185,8 +1231,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 59005, 1145, 6449, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
-Cell[59566, 1167, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
+Cell[558, 20, 61561, 1191, 6679, "Input",ExpressionUUID->"25c45d6d-afc6-4f12-bb6a-7e584a49f672"],
+Cell[62122, 1213, 165, 2, 55, "Input",ExpressionUUID->"74c1359a-2d2f-4962-9ce3-0df9347436f0"]
 }
 ]
 *)
